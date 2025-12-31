@@ -365,8 +365,7 @@ Or disable one by deleting/renaming the workflow file.
 
 ## 📚 Related Documentation
 
-- **PYPI_RELEASE_GUIDE.md**: Manual release process
-- **AUTOMATED_RELEASE.md**: Original automated release guide (tag-based)
+- **AUTOMATED_RELEASE.md**: Tag-based automated release guide
 - **RELEASE_CHECKLIST.md**: Interactive release checklist
 - **CHANGELOG.md**: Release history
 

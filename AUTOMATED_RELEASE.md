@@ -53,7 +53,7 @@ Trusted Publishing eliminates the need for API tokens!
 
 1. **First Manual Release:**
    - You need to publish v0.1.0 manually first (one time only)
-   - Follow `PYPI_RELEASE_GUIDE.md` for the first release
+   - Use: `poetry build && poetry publish` (you'll be prompted for PyPI credentials)
 
 2. **Configure Trusted Publishing on PyPI:**
    - Go to: https://pypi.org/manage/project/datacheck-cli/settings/publishing/
