@@ -1,0 +1,71 @@
+checks:
+  # Order ID validation
+  - name: order_id_validation
+    column: order_id
+    rules:
+      not_null: true
+      unique: true
+      regex: "^ORD[0-9]{3}$"  # Format: ORD followed by 3 digits
+
+  # Customer email validation
+  - name: email_validation
+    column: customer_email
+    rules:
+      not_null: true
+      regex: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+
+  # Product name validation
+  - name: product_name_validation
+    column: product_name
+    rules:
+      not_null: true
+      regex: "^.{3,}$"  # At least 3 characters
+
+  # Quantity validation
+  - name: quantity_not_null
+    column: quantity
+    rules:
+      not_null: true
+
+  - name: quantity_range
+    column: quantity
+    rules:
+      min: 1
+      max: 1000
+
+  # Unit price validation
+  - name: unit_price_not_null
+    column: unit_price
+    rules:
+      not_null: true
+
+  - name: unit_price_range
+    column: unit_price
+    rules:
+      min: 0.01
+      max: 100000
+
+  # Total amount validation
+  - name: total_amount_not_null
+    column: total_amount
+    rules:
+      not_null: true
+
+  - name: total_amount_range
+    column: total_amount
+    rules:
+      min: 0.01
+      max: 100000
+
+  # Order status validation
+  - name: order_status_validation
+    column: order_status
+    rules:
+      not_null: true
+      allowed_values: ["pending", "processing", "shipped", "completed", "cancelled"]
+
+  # Order date validation
+  - name: order_date_validation
+    column: order_date
+    rules:
+      not_null: true

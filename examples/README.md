@@ -72,6 +72,45 @@ Production use cases:
 
 ---
 
+### 📁 [Parquet Example](./parquet-example/)
+**Difficulty**: Beginner
+**Topics**: Parquet files, columnar storage, type safety
+
+Validate Parquet format data:
+- Efficient columnar storage format
+- Type-safe data validation
+- Big data ready
+- Same validation rules as CSV
+
+**Files**:
+- `product_inventory.parquet` - Product inventory data in Parquet format
+- `validation_config.yaml` - Inventory validation rules
+- `README.md` - Parquet format guide
+
+**Best for**: Data engineering pipelines, big data workflows, type-safe validation
+
+---
+
+### 📁 [Database Example](./database-example/)
+**Difficulty**: Intermediate
+**Topics**: SQLite databases, SQL queries, Python API
+
+Validate data directly from databases:
+- SQLite database validation
+- Custom SQL query support
+- Python API integration
+- No data export required
+
+**Files**:
+- `orders.db` - SQLite database with orders table
+- `validation_config.yaml` - Order validation rules
+- `validate_orders.py` - Python validation script
+- `README.md` - Database validation guide
+
+**Best for**: Application databases, data warehouses, Python integration
+
+---
+
 ## Learning Path
 
 ### 1. Start with Basic
@@ -102,6 +141,20 @@ datacheck validate sales_data.csv --config sales_validation.yaml --format json
 datacheck validate user_data.csv --config user_validation.yaml
 ```
 Learn integration patterns and production best practices.
+
+### 4. Try Parquet Format
+```bash
+cd parquet-example
+datacheck validate product_inventory.parquet --config validation_config.yaml
+```
+Learn how to validate columnar data formats efficiently.
+
+### 5. Explore Database Validation
+```bash
+cd database-example
+poetry run python validate_orders.py
+```
+Learn how to validate database tables using the Python API.
 
 ---
 

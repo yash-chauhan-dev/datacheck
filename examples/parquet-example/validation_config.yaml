@@ -1,0 +1,59 @@
+checks:
+  # Product ID validation
+  - name: product_id_validation
+    column: product_id
+    rules:
+      not_null: true
+      unique: true
+      regex: "^SKU[0-9]{3}$"  # Format: SKU followed by 3 digits
+
+  # Product name validation
+  - name: product_name_validation
+    column: product_name
+    rules:
+      not_null: true
+      regex: "^.{3,}$"  # At least 3 characters
+
+  # Category validation
+  - name: category_validation
+    column: category
+    rules:
+      not_null: true
+      allowed_values: ["Electronics", "Accessories", "Furniture", "Office Supplies"]
+
+  # Price validation
+  - name: price_not_null
+    column: price
+    rules:
+      not_null: true
+
+  - name: price_range
+    column: price
+    rules:
+      min: 0.01
+      max: 10000
+
+  # Stock quantity validation
+  - name: stock_not_null
+    column: stock_quantity
+    rules:
+      not_null: true
+
+  - name: stock_range
+    column: stock_quantity
+    rules:
+      min: 0
+      max: 10000
+
+  # Supplier ID validation
+  - name: supplier_id_validation
+    column: supplier_id
+    rules:
+      not_null: true
+      regex: "^SUP[0-9]{3}$"  # Format: SUP followed by 3 digits
+
+  # Last updated validation
+  - name: last_updated_validation
+    column: last_updated
+    rules:
+      not_null: true
