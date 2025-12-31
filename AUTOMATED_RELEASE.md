@@ -1,6 +1,16 @@
 # Automated Release Pipeline
 
-DataCheck now has an automated release pipeline! Just push a tag and everything happens automatically.
+> **📚 NEW: Comprehensive Release Workflows Guide Available!**
+>
+> We now support **TWO automated release approaches**:
+> 1. **Auto-release on PR merge** (recommended for continuous delivery)
+> 2. **Manual tag-based release** (this guide - for explicit control)
+>
+> **See [RELEASE_WORKFLOWS.md](RELEASE_WORKFLOWS.md) for complete comparison and setup guide.**
+
+---
+
+DataCheck has an automated release pipeline! Just push a tag and everything happens automatically.
 
 ## 🚀 How It Works
 
