@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "datacheck"
+name = "datacheck-cli"
 version = "0.1.0"
 description = "Lightweight data quality validation CLI tool"
 authors = ["datacheck <hello@datacheck.com>"]

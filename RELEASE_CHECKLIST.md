@@ -64,11 +64,11 @@ Use this checklist to track your release progress.
 ## Test PyPI Release
 
 - [ ] Publish to Test PyPI: `poetry publish -r testpypi`
-- [ ] Check Test PyPI page: https://test.pypi.org/project/datacheck/
-- [ ] Install from Test PyPI: `pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ datacheck`
+- [ ] Check Test PyPI page: https://test.pypi.org/project/datacheck-cli/
+- [ ] Install from Test PyPI: `pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ datacheck-cli`
 - [ ] Test CLI: `datacheck version`
 - [ ] Test validation: Run an example
-- [ ] Uninstall: `pip uninstall datacheck -y`
+- [ ] Uninstall: `pip uninstall datacheck-cli -y`
 - [ ] Fix any issues found
 - [ ] Repeat if needed
 
@@ -78,9 +78,9 @@ Use this checklist to track your release progress.
 
 - [ ] Final build: `rm -rf dist/ && poetry build`
 - [ ] Publish to PyPI: `poetry publish`
-- [ ] Verify on PyPI: https://pypi.org/project/datacheck/
+- [ ] Verify on PyPI: https://pypi.org/project/datacheck-cli/
 - [ ] Check all metadata displays correctly
-- [ ] Install from PyPI: `pip install datacheck`
+- [ ] Install from PyPI: `pip install datacheck-cli`
 - [ ] Test CLI: `datacheck version`
 - [ ] Test validation: Run an example
 - [ ] Celebrate! 🎉
@@ -97,8 +97,8 @@ Use this checklist to track your release progress.
   - [ ] Tag: v0.1.0
   - [ ] Title: v0.1.0 - Initial Release
   - [ ] Description: Copy from CHANGELOG.md
-  - [ ] Attach: dist/datacheck-0.1.0.tar.gz
-  - [ ] Attach: dist/datacheck-0.1.0-py3-none-any.whl
+  - [ ] Attach: dist/datacheck_cli-0.1.0.tar.gz
+  - [ ] Attach: dist/datacheck_cli-0.1.0-py3-none-any.whl
 - [ ] Publish release
 
 ---
@@ -118,7 +118,7 @@ Use this checklist to track your release progress.
 ### Monitoring
 - [ ] Add PyPI badges to README
 - [ ] Watch for first GitHub stars ⭐
-- [ ] Monitor PyPI downloads: https://pepy.tech/project/datacheck
+- [ ] Monitor PyPI downloads: https://pepy.tech/project/datacheck-cli
 - [ ] Respond to initial issues/questions
 - [ ] Thank early contributors
 
@@ -133,7 +133,7 @@ Use this checklist to track your release progress.
 
 After 24 hours, verify:
 
-- [ ] Package installs correctly: `pip install datacheck`
+- [ ] Package installs correctly: `pip install datacheck-cli`
 - [ ] CLI works: `datacheck --help`
 - [ ] No critical issues reported
 - [ ] Download count increasing
@@ -166,8 +166,8 @@ If something goes wrong:
 
 ✅ Your release is successful when:
 
-1. Package is available on PyPI: https://pypi.org/project/datacheck/
-2. Users can install: `pip install datacheck`
+1. Package is available on PyPI: https://pypi.org/project/datacheck-cli/
+2. Users can install: `pip install datacheck-cli`
 3. CLI works: `datacheck version` shows v0.1.0
 4. Examples run without errors
 5. No critical bugs reported in first 48 hours

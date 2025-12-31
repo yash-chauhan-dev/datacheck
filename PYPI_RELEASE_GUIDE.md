@@ -80,7 +80,7 @@ Check `pyproject.toml`:
 
 ```toml
 [tool.poetry]
-name = "datacheck"
+name = "datacheck-cli"
 version = "0.1.0"  # ✅ Correct for first release
 ```
 
@@ -115,11 +115,11 @@ poetry run mypy datacheck/
 poetry build
 
 # This creates:
-# - dist/datacheck-0.1.0.tar.gz (source distribution)
-# - dist/datacheck-0.1.0-py3-none-any.whl (wheel)
+# - dist/datacheck_cli-0.1.0.tar.gz (source distribution)
+# - dist/datacheck_cli-0.1.0-py3-none-any.whl (wheel)
 
 # Install locally to test
-pip install dist/datacheck-0.1.0-py3-none-any.whl
+pip install dist/datacheck_cli-0.1.0-py3-none-any.whl
 
 # Test the CLI
 datacheck version
@@ -188,16 +188,16 @@ poetry build
 poetry publish -r testpypi
 
 # You'll see:
-# Publishing datacheck (0.1.0) to testpypi
-# - Uploading datacheck-0.1.0.tar.gz 100%
-# - Uploading datacheck-0.1.0-py3-none-any.whl 100%
+# Publishing datacheck-cli (0.1.0) to testpypi
+# - Uploading datacheck_cli-0.1.0.tar.gz 100%
+# - Uploading datacheck_cli-0.1.0-py3-none-any.whl 100%
 ```
 
 ### Step 2: Test Installation from Test PyPI
 
 ```bash
 # Install from Test PyPI
-pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ datacheck
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ datacheck-cli
 
 # The --extra-index-url is needed for dependencies (pandas, typer, etc.)
 
@@ -209,7 +209,7 @@ cd examples/basic
 datacheck validate sample_data.csv --config validation_config.yaml
 
 # Uninstall
-pip uninstall datacheck -y
+pip uninstall datacheck-cli -y
 ```
 
 ### Step 3: Publish to Production PyPI
@@ -222,16 +222,16 @@ poetry publish
 
 # Confirm the upload (type 'yes')
 # You'll see:
-# Publishing datacheck (0.1.0) to PyPI
-# - Uploading datacheck-0.1.0.tar.gz 100%
-# - Uploading datacheck-0.1.0-py3-none-any.whl 100%
+# Publishing datacheck-cli (0.1.0) to PyPI
+# - Uploading datacheck_cli-0.1.0.tar.gz 100%
+# - Uploading datacheck_cli-0.1.0-py3-none-any.whl 100%
 ```
 
 **🎉 Congratulations! Your package is now live on PyPI!**
 
 ### Step 4: Verify PyPI Listing
 
-1. Go to: https://pypi.org/project/datacheck/
+1. Go to: https://pypi.org/project/datacheck-cli/
 2. Check:
    - ✅ Version shows 0.1.0
    - ✅ Description renders correctly
@@ -243,7 +243,7 @@ poetry publish
 
 ```bash
 # Install from PyPI (for real this time!)
-pip install datacheck
+pip install datacheck-cli
 
 # Test
 datacheck version
@@ -274,8 +274,8 @@ Then on GitHub:
 4. Release title: `v0.1.0 - Initial Release`
 5. Description: Copy from `CHANGELOG.md`
 6. Attach files:
-   - `dist/datacheck-0.1.0.tar.gz`
-   - `dist/datacheck-0.1.0-py3-none-any.whl`
+   - `dist/datacheck_cli-0.1.0.tar.gz`
+   - `dist/datacheck_cli-0.1.0-py3-none-any.whl`
 7. Click "Publish release"
 
 ### 2. Announce the Release
@@ -302,7 +302,7 @@ A lightweight CLI tool for data quality validation.
 - CI/CD ready with exit codes
 - 92% test coverage
 
-pip install datacheck
+pip install datacheck-cli
 
 https://github.com/yash-chauhan-dev/datacheck
 ```
@@ -312,14 +312,14 @@ https://github.com/yash-chauhan-dev/datacheck
 Add PyPI badges to your README.md:
 
 ```markdown
-[![PyPI version](https://badge.fury.io/py/datacheck.svg)](https://pypi.org/project/datacheck/)
-[![Downloads](https://pepy.tech/badge/datacheck)](https://pepy.tech/project/datacheck)
-[![Python Versions](https://img.shields.io/pypi/pyversions/datacheck.svg)](https://pypi.org/project/datacheck/)
+[![PyPI version](https://badge.fury.io/py/datacheck-cli.svg)](https://pypi.org/project/datacheck-cli/)
+[![Downloads](https://pepy.tech/badge/datacheck-cli)](https://pepy.tech/project/datacheck-cli)
+[![Python Versions](https://img.shields.io/pypi/pyversions/datacheck-cli.svg)](https://pypi.org/project/datacheck-cli/)
 ```
 
 ### 4. Monitor Initial Usage
 
-- Check PyPI download stats: https://pepy.tech/project/datacheck
+- Check PyPI download stats: https://pepy.tech/project/datacheck-cli
 - Watch for GitHub issues and stars
 - Respond to early user feedback
 
@@ -348,13 +348,13 @@ poetry config pypi-token.pypi pypi-YOUR_NEW_TOKEN
 
 ### Error: "Package name already taken"
 
-If `datacheck` is taken (unlikely, but possible):
+If your desired package name is taken:
 
-1. Check: https://pypi.org/project/datacheck/
-2. If taken, choose a different name (e.g., `datacheck-cli`)
+1. Check if the name exists: https://pypi.org/project/YOUR-PACKAGE-NAME/
+2. Choose a different name (we chose `datacheck-cli` since `datacheck` was taken)
 3. Update `pyproject.toml`:
    ```toml
-   name = "datacheck-cli"
+   name = "your-new-package-name"
    ```
 
 ### Build Warnings
@@ -392,13 +392,13 @@ poetry build
 # 3. Test locally
 pip install dist/*.whl
 datacheck version
-pip uninstall datacheck -y
+pip uninstall datacheck-cli -y
 
 # 4. Test on Test PyPI
 poetry publish -r testpypi
-pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ datacheck
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ datacheck-cli
 datacheck version
-pip uninstall datacheck -y
+pip uninstall datacheck-cli -y
 
 # 5. Publish to PyPI
 poetry publish
@@ -408,7 +408,7 @@ git tag -a v0.1.0 -m "Release v0.1.0"
 git push origin v0.1.0
 
 # 7. Test installation from PyPI
-pip install datacheck
+pip install datacheck-cli
 datacheck version
 
 # 8. Celebrate! 🎉

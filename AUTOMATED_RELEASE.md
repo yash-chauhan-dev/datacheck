@@ -46,7 +46,7 @@ Trusted Publishing eliminates the need for API tokens!
    - Follow `PYPI_RELEASE_GUIDE.md` for the first release
 
 2. **Configure Trusted Publishing on PyPI:**
-   - Go to: https://pypi.org/manage/project/datacheck/settings/publishing/
+   - Go to: https://pypi.org/manage/project/datacheck-cli/settings/publishing/
    - Add a new publisher:
      - **Owner**: `yash-chauhan-dev`
      - **Repository name**: `datacheck`
@@ -144,11 +144,11 @@ git push origin v0.1.0
 - https://github.com/yash-chauhan-dev/datacheck/releases
 
 **PyPI Package:**
-- https://pypi.org/project/datacheck/
+- https://pypi.org/project/datacheck-cli/
 
 **Install Test:**
 ```bash
-pip install datacheck==0.1.0
+pip install datacheck-cli==0.1.0
 datacheck version
 ```
 
@@ -280,7 +280,7 @@ git push origin v0.1.0
 
 # Wait 7-10 minutes, then check:
 # - GitHub Actions: https://github.com/yash-chauhan-dev/datacheck/actions
-# - PyPI: https://pypi.org/project/datacheck/0.1.0/
+# - PyPI: https://pypi.org/project/datacheck-cli/0.1.0/
 # - GitHub Release: https://github.com/yash-chauhan-dev/datacheck/releases/tag/v0.1.0
 ```
 

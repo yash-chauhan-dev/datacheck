@@ -25,7 +25,7 @@ DataCheck is a **simple, fast, and CLI-first** data validation tool for engineer
 
 ```bash
 # From PyPI (when published)
-pip install datacheck
+pip install datacheck-cli
 
 # From source
 git clone https://github.com/yash-chauhan-dev/datacheck.git
@@ -420,7 +420,7 @@ jobs:
           python-version: '3.10'
 
       - name: Install DataCheck
-        run: pip install datacheck
+        run: pip install datacheck-cli
 
       - name: Validate Data
         run: |

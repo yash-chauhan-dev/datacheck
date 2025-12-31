@@ -87,8 +87,8 @@ DataCheck's first public release! A lightweight, fast, and developer-friendly CL
 
 ### 📦 Distribution
 
-- **PyPI package**: `pip install datacheck`
-- **Poetry support**: `poetry add datacheck`
+- **PyPI package**: `pip install datacheck-cli`
+- **Poetry support**: `poetry add datacheck-cli`
 - **Python versions**: 3.10, 3.11, 3.12
 - **Platforms**: Linux, macOS, Windows
 
