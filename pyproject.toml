@@ -25,8 +25,11 @@ pandas = "^2.0.0"
 pyyaml = "^6.0"
 rich = "^13.0.0"
 pyarrow = "^22.0.0"
-duckdb = "0.8.1"
 click = "~8.1.0"
+duckdb = { version = "^0.8.1", optional = true, markers = "platform_system != 'Windows'" }
+
+[tool.poetry.extras]
+duckdb = ["duckdb"]
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.0"

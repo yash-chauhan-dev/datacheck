@@ -5,10 +5,18 @@ from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import Any
 
-import duckdb
 import pandas as pd
 
 from datacheck.exceptions import DataLoadError, EmptyDatasetError, UnsupportedFormatError
+
+# Optional DuckDB import
+try:
+    import duckdb
+
+    HAS_DUCKDB = True
+except ImportError:
+    HAS_DUCKDB = False
+    duckdb = None  # type: ignore[assignment]
 
 
 class DataLoader(ABC):
@@ -213,7 +221,7 @@ class DuckDBLoader(DataLoader):
             DataFrame containing database data
 
         Raises:
-            DataLoadError: If database cannot be loaded
+            DataLoadError: If database cannot be loaded or DuckDB is not installed
             EmptyDatasetError: If query returns no data
         """
         query = self._build_query()
@@ -228,6 +236,10 @@ class DuckDBLoader(DataLoader):
                     sqlite_conn.close()
             else:
                 # Use DuckDB for DuckDB files
+                if not HAS_DUCKDB:
+                    raise DataLoadError(
+                        "DuckDB is not installed. Install it with: pip install 'datacheck[duckdb]'"
+                    )
                 duckdb_conn = duckdb.connect(str(self.file_path), read_only=True)
                 try:
                     df = duckdb_conn.execute(query).fetchdf()
