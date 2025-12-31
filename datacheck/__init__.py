@@ -10,6 +10,13 @@ from datacheck.exceptions import (
     UnsupportedFormatError,
     ValidationError,
 )
+from datacheck.loader import (
+    CSVLoader,
+    DataLoader,
+    DuckDBLoader,
+    LoaderFactory,
+    ParquetLoader,
+)
 
 __version__ = "0.1.0"
 __author__ = "datacheck"
@@ -28,4 +35,10 @@ __all__ = [
     "UnsupportedFormatError",
     "ColumnNotFoundError",
     "EmptyDatasetError",
+    # Loaders
+    "DataLoader",
+    "CSVLoader",
+    "ParquetLoader",
+    "DuckDBLoader",
+    "LoaderFactory",
 ]
