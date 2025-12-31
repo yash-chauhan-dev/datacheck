@@ -1,7 +1,5 @@
 # DataCheck
 
-<div align="center">
-
 **Lightweight data quality validation CLI tool for data engineers**
 
 [![Python Version](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
@@ -12,18 +10,16 @@
 [Get Started](getting-started/installation.md){ .md-button .md-button--primary }
 [View on GitHub](https://github.com/yash-chauhan-dev/datacheck){ .md-button }
 
-</div>
-
 ---
 
 ## What is DataCheck?
 
 DataCheck is a **simple, fast, and CLI-first** data validation tool designed for data engineers who need to:
 
-- :white_check_mark: **Validate data quality** without heavy frameworks
-- :x: **Fail CI/CD pipelines** when data doesn't meet expectations
-- :zap: **Get instant feedback** on data issues with beautiful terminal output
-- :page_facing_up: **Write validation rules** in simple, declarative YAML
+- **Validate data quality** without heavy frameworks
+- **Fail CI/CD pipelines** when data doesn't meet expectations
+- **Get instant feedback** on data issues with beautiful terminal output
+- **Write validation rules** in simple, declarative YAML
 
 **Think of it as "pytest for data" - lightweight, focused, and developer-friendly.**
 
@@ -31,7 +27,7 @@ DataCheck is a **simple, fast, and CLI-first** data validation tool designed for
 
 ## Key Features
 
-### :rocket: Multiple Data Formats
+### Multiple Data Formats
 
 DataCheck supports all your data sources out of the box:
 
@@ -39,7 +35,7 @@ DataCheck supports all your data sources out of the box:
 - **Parquet** for efficient columnar data
 - **SQLite** and **DuckDB** for database tables
 
-### :wrench: Comprehensive Validation Rules
+### Comprehensive Validation Rules
 
 Built-in validation rules for common data quality checks:
 
@@ -49,7 +45,7 @@ Built-in validation rules for common data quality checks:
 - `regex` - Pattern matching for strings
 - `allowed_values` - Whitelist validation
 
-### :art: Beautiful Terminal Output
+### Beautiful Terminal Output
 
 Colorful, rich terminal output powered by [Rich](https://rich.readthedocs.io/):
 
@@ -58,7 +54,7 @@ Colorful, rich terminal output powered by [Rich](https://rich.readthedocs.io/):
 - Summary statistics and metrics
 - JSON output for automation
 
-### :rocket: CI/CD Ready
+### CI/CD Ready
 
 Perfect for data pipelines and automation:
 
@@ -67,7 +63,7 @@ Perfect for data pipelines and automation:
 - Fast validation using Pandas
 - Works in GitHub Actions, GitLab CI, Jenkins, etc.
 
-### :clipboard: Simple Configuration
+### Simple Configuration
 
 Write validation rules in clean, readable YAML:
 
@@ -133,19 +129,19 @@ datacheck validate products.csv --config validation.yaml
 
 ## Why DataCheck?
 
-### :zap: Lightweight
+### Lightweight
 
 - **No complex setup** - just install and use
 - **Single binary** - no dependencies to manage
 - **Fast** - processes millions of rows efficiently
 
-### :dart: Focused
+### Focused
 
 - **Does one thing well** - data validation
 - **No feature bloat** - simple and maintainable
 - **Clear API** - easy to understand and use
 
-### :handshake: Developer-Friendly
+### Developer-Friendly
 
 - **CLI-first** - designed for command-line workflows
 - **Git-friendly** - YAML configs version control easily
@@ -155,7 +151,7 @@ datacheck validate products.csv --config validation.yaml
 
 ## Real-World Use Cases
 
-### :factory: **Airflow Data Pipelines**
+### Airflow Data Pipelines
 
 Validate before expensive transformations. **Save 8 hours/month** in debugging time.
 
@@ -171,7 +167,7 @@ extract >> validate >> transform >> load
 
 **Impact**: Catch issues in **30 seconds** instead of after **2 hours** of processing.
 
-### :rocket: **ML Training Pipelines**
+### ML Training Pipelines
 
 Validate training data before expensive GPU runs. **Save $50-100/month** in compute costs.
 
@@ -183,7 +179,7 @@ def train_model():
 
 **Impact**: Prevent **2 hours of wasted GPU time** per bad data incident.
 
-### :handshake: **Data Contracts**
+### Data Contracts
 
 Enforce contracts between producer and consumer teams. **Living documentation** that never gets outdated.
 
@@ -199,7 +195,7 @@ checks:
 
 **Impact**: Prevent breaking changes. Trust between teams. **Clear ownership**.
 
-### :package: **CI/CD Quality Gates**
+### CI/CD Quality Gates
 
 Replace **100+ lines of custom Python** with **10 lines of YAML**.
 
@@ -217,64 +213,52 @@ checks:
 
 ---
 
-## Statistics
+## Project Statistics
 
-- :white_check_mark: **180 tests** passing
-- :bar_chart: **92% code coverage**
-- :safety_vest: **100% type checked** with mypy
-- :rocket: **Zero lint errors** with ruff
-- :package: **10 Python modules**
-- :memo: **701 lines of code**
+- ✅ **180 tests** passing
+- 📊 **92% code coverage**
+- 🔒 **100% type checked** with mypy
+- 🚀 **Zero lint errors** with ruff
+- 📦 **10 Python modules**
+- 📝 **701 lines of code**
 
 ---
 
 ## Community
 
-- :bug: [Report Issues](https://github.com/yash-chauhan-dev/datacheck/issues)
-- :bulb: [Feature Requests](https://github.com/yash-chauhan-dev/datacheck/issues/new?template=feature_request.md)
-- :books: [Documentation](https://yash-chauhan-dev.github.io/datacheck/)
-- :star: [Star on GitHub](https://github.com/yash-chauhan-dev/datacheck)
+- 🐛 [Report Issues](https://github.com/yash-chauhan-dev/datacheck/issues)
+- 💡 [Feature Requests](https://github.com/yash-chauhan-dev/datacheck/issues/new?template=feature_request.md)
+- 📚 [Documentation](https://yash-chauhan-dev.github.io/datacheck/)
+- ⭐ [Star on GitHub](https://github.com/yash-chauhan-dev/datacheck)
 
 ---
 
 ## Next Steps
 
-<div class="grid cards" markdown>
+### Get Started in 5 Minutes
 
--   :material-clock-fast:{ .lg .middle } __Get Started in 5 Minutes__
+Install DataCheck and run your first validation
 
-    ---
+[Quick Start →](getting-started/quick-start.md)
 
-    Install DataCheck and run your first validation
+### Learn the Basics
 
-    [:octicons-arrow-right-24: Quick Start](getting-started/quick-start.md)
+Understand validation rules and configuration
 
--   :material-book-open-variant:{ .lg .middle } __Learn the Basics__
+[User Guide →](user-guide/overview.md)
 
-    ---
+### See Real Examples
 
-    Understand validation rules and configuration
+Explore real-world validation scenarios
 
-    [:octicons-arrow-right-24: User Guide](user-guide/overview.md)
+[Examples →](examples/real-world.md)
 
--   :material-code-braces:{ .lg .middle } __See Real Examples__
+### Integrate with CI/CD
 
-    ---
+Add DataCheck to your automation workflows
 
-    Explore real-world validation scenarios
-
-    [:octicons-arrow-right-24: Examples](examples/real-world.md)
-
--   :material-cog:{ .lg .middle } __Integrate with CI/CD__
-
-    ---
-
-    Add DataCheck to your automation workflows
-
-    [:octicons-arrow-right-24: Integration Guide](integration/cicd.md)
-
-</div>
+[Integration Guide →](integration/cicd.md)
 
 ---
 
-Made with :heart: for data engineers who value simplicity and speed.
+Made with ❤️ for data engineers who value simplicity and speed.
