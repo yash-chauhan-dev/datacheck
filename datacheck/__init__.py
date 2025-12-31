@@ -18,6 +18,7 @@ from datacheck.loader import (
     LoaderFactory,
     ParquetLoader,
 )
+from datacheck.output import JSONExporter, OutputFormatter
 
 __version__ = "0.1.0"
 __author__ = "datacheck"
@@ -44,4 +45,7 @@ __all__ = [
     "LoaderFactory",
     # Engine
     "ValidationEngine",
+    # Output
+    "OutputFormatter",
+    "JSONExporter",
 ]
