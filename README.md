@@ -6,6 +6,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 [![Type checked: mypy](https://img.shields.io/badge/type%20checked-mypy-blue.svg)](http://mypy-lang.org/)
+[![Documentation](https://img.shields.io/badge/docs-mkdocs-blue.svg)](https://yash-chauhan-dev.github.io/datacheck/)
+
+📚 **[Read the Full Documentation](https://yash-chauhan-dev.github.io/datacheck/)** 📚
 
 ## What is DataCheck?
 
@@ -632,7 +635,8 @@ Built with:
 
 ## Support
 
-- **Documentation**: [examples/README.md](examples/README.md)
+- **Documentation**: [https://yash-chauhan-dev.github.io/datacheck/](https://yash-chauhan-dev.github.io/datacheck/)
+- **Examples**: [examples/README.md](examples/README.md)
 - **Issues**: [GitHub Issues](https://github.com/yash-chauhan-dev/datacheck/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/yash-chauhan-dev/datacheck/discussions)
 

@@ -1,0 +1,113 @@
+site_name: DataCheck
+site_url: https://yash-chauhan-dev.github.io/datacheck
+site_author: DataCheck Team
+site_description: Lightweight data quality validation CLI tool for data engineers
+
+repo_name: yash-chauhan-dev/datacheck
+repo_url: https://github.com/yash-chauhan-dev/datacheck
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    # Light mode
+    - scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+
+  icon:
+    repo: fontawesome/brands/github
+
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - tables
+  - attr_list
+  - md_in_html
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      enable_creation_date: true
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Installation: getting-started/installation.md
+      - Quick Start: getting-started/quick-start.md
+      - First Validation: getting-started/first-validation.md
+  - User Guide:
+      - Overview: user-guide/overview.md
+      - Validation Rules: user-guide/validation-rules.md
+      - Configuration: user-guide/configuration.md
+      - Output Formats: user-guide/output-formats.md
+      - Exit Codes: user-guide/exit-codes.md
+  - Examples:
+      - Basic Examples: examples/basic.md
+      - Real-World Scenarios: examples/real-world.md
+      - CSV Validation: examples/csv.md
+      - Parquet Validation: examples/parquet.md
+      - Database Validation: examples/database.md
+  - Integration:
+      - CI/CD Pipelines: integration/cicd.md
+      - GitHub Actions: integration/github-actions.md
+      - Pre-commit Hooks: integration/pre-commit.md
+      - Python Scripts: integration/python.md
+      - Data Pipelines: integration/data-pipelines.md
+  - Reference:
+      - CLI Commands: reference/cli.md
+      - Python API: reference/python-api.md
+      - Configuration Schema: reference/config-schema.md
+  - Contributing:
+      - How to Contribute: contributing.md
+      - Development Setup: development.md
+      - Changelog: changelog.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yash-chauhan-dev/datacheck
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/datacheck-cli/
+
+  version:
+    provider: mike
+
+copyright: Copyright &copy; 2025 DataCheck Team
