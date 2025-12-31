@@ -1,5 +1,6 @@
 """DataCheck - Lightweight data quality validation CLI tool."""
 
+from datacheck.engine import ValidationEngine
 from datacheck.exceptions import (
     ColumnNotFoundError,
     ConfigurationError,
@@ -41,4 +42,6 @@ __all__ = [
     "ParquetLoader",
     "DuckDBLoader",
     "LoaderFactory",
+    # Engine
+    "ValidationEngine",
 ]
