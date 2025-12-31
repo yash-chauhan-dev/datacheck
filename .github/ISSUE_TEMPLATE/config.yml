@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 GitHub Discussions
+    url: https://github.com/yash-chauhan-dev/datacheck/discussions
+    about: Ask questions and discuss ideas with the community
+  - name: 📖 Documentation
+    url: https://github.com/yash-chauhan-dev/datacheck#readme
+    about: Read the full documentation and guides
+  - name: 💡 Examples
+    url: https://github.com/yash-chauhan-dev/datacheck/tree/main/examples
+    about: Check out example configurations and use cases
