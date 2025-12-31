@@ -1,0 +1,267 @@
+name: Auto Release on Version Bump
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'pyproject.toml'
+
+permissions:
+  contents: write
+  id-token: write
+  actions: read  # Required to check workflow status
+
+jobs:
+  wait-for-ci:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Wait for CI workflow to complete
+      uses: lewagon/wait-on-check-action@v1.3.4
+      with:
+        ref: ${{ github.sha }}
+        check-name: 'CI'  # Name of the CI workflow check
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        wait-interval: 10
+        allowed-conclusions: success
+
+    - name: CI passed
+      run: echo "✅ CI workflow passed successfully"
+
+  check-version:
+    needs: wait-for-ci
+    runs-on: ubuntu-latest
+    outputs:
+      version-changed: ${{ steps.check.outputs.changed }}
+      new-version: ${{ steps.check.outputs.version }}
+      should-release: ${{ steps.check.outputs.should_release }}
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Need full history to compare versions
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+
+    - name: Install Poetry
+      run: |
+        pipx install poetry
+        poetry --version
+
+    - name: Check version changed
+      id: check
+      run: |
+        # Get current version from pyproject.toml
+        CURRENT_VERSION=$(poetry version -s)
+        echo "Current version: $CURRENT_VERSION"
+
+        # Get previous version from last commit
+        git checkout HEAD~1 -- pyproject.toml 2>/dev/null || true
+        PREVIOUS_VERSION=$(poetry version -s 2>/dev/null || echo "0.0.0")
+        echo "Previous version: $PREVIOUS_VERSION"
+
+        # Restore current pyproject.toml
+        git checkout HEAD -- pyproject.toml
+
+        # Check if version changed
+        if [ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ]; then
+          echo "changed=true" >> $GITHUB_OUTPUT
+          echo "version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+
+          # Check if version increased (basic check)
+          if [ "$CURRENT_VERSION" \> "$PREVIOUS_VERSION" ] || [ "$PREVIOUS_VERSION" = "0.0.0" ]; then
+            echo "should_release=true" >> $GITHUB_OUTPUT
+            echo "✅ Version bumped: $PREVIOUS_VERSION → $CURRENT_VERSION"
+          else
+            echo "should_release=false" >> $GITHUB_OUTPUT
+            echo "❌ Version decreased: $PREVIOUS_VERSION → $CURRENT_VERSION"
+            exit 1
+          fi
+        else
+          echo "changed=false" >> $GITHUB_OUTPUT
+          echo "should_release=false" >> $GITHUB_OUTPUT
+          echo "ℹ️ Version unchanged: $CURRENT_VERSION"
+        fi
+
+    - name: Check tag doesn't exist
+      if: steps.check.outputs.should_release == 'true'
+      run: |
+        VERSION=${{ steps.check.outputs.version }}
+        if git rev-parse "v$VERSION" >/dev/null 2>&1; then
+          echo "❌ Tag v$VERSION already exists!"
+          exit 1
+        fi
+        echo "✅ Tag v$VERSION is available"
+
+  test:
+    needs: check-version
+    if: needs.check-version.outputs.should-release == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install Poetry
+      run: |
+        pipx install poetry
+        poetry --version
+
+    - name: Install dependencies
+      run: poetry install --no-interaction
+
+    - name: Run tests
+      run: poetry run pytest --cov=datacheck --cov-report=term
+
+    - name: Run linting
+      run: poetry run ruff check datacheck tests
+
+    - name: Run type checking
+      run: poetry run mypy datacheck
+
+  build:
+    needs: [check-version, test]
+    if: needs.check-version.outputs.should-release == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+
+    - name: Install Poetry
+      run: |
+        pipx install poetry
+        poetry --version
+
+    - name: Build package
+      run: poetry build
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: dist
+        path: dist/
+
+  create-tag:
+    needs: [check-version, build]
+    if: needs.check-version.outputs.should-release == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Create and push tag
+      run: |
+        VERSION=${{ needs.check-version.outputs.new-version }}
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git tag -a "v$VERSION" -m "Release v$VERSION"
+        git push origin "v$VERSION"
+        echo "✅ Created and pushed tag v$VERSION"
+
+  publish-pypi:
+    needs: [check-version, create-tag]
+    if: needs.check-version.outputs.should-release == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/datacheck-cli/
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: dist
+        path: dist/
+
+    - name: Publish to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        password: ${{ secrets.PYPI_API_TOKEN }}
+        # For trusted publishing (recommended), remove password and configure at:
+        # https://pypi.org/manage/project/datacheck-cli/settings/publishing/
+
+  create-release:
+    needs: [check-version, publish-pypi]
+    if: needs.check-version.outputs.should-release == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: dist
+        path: dist/
+
+    - name: Extract changelog for this version
+      id: changelog
+      run: |
+        VERSION=${{ needs.check-version.outputs.new-version }}
+        # Extract changelog section for this version
+        awk "/## \[${VERSION}\]/,/## \[/" CHANGELOG.md | sed '$d' > RELEASE_NOTES.md || echo "Release v${VERSION}" > RELEASE_NOTES.md
+        cat RELEASE_NOTES.md
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v${{ needs.check-version.outputs.new-version }}
+        name: Release v${{ needs.check-version.outputs.new-version }}
+        body_path: RELEASE_NOTES.md
+        files: |
+          dist/*
+        draft: false
+        prerelease: false
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  announce:
+    needs: [check-version, create-release]
+    if: needs.check-version.outputs.should-release == 'true'
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Create success summary
+      run: |
+        VERSION=${{ needs.check-version.outputs.new-version }}
+        echo "## 🎉 Release v$VERSION Published!" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### ✅ What was deployed:" >> $GITHUB_STEP_SUMMARY
+        echo "- 📦 PyPI: https://pypi.org/project/datacheck-cli/$VERSION/" >> $GITHUB_STEP_SUMMARY
+        echo "- 🏷️ GitHub Release: https://github.com/${{ github.repository }}/releases/tag/v$VERSION" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### 📥 Install command:" >> $GITHUB_STEP_SUMMARY
+        echo '```bash' >> $GITHUB_STEP_SUMMARY
+        echo "pip install datacheck-cli==$VERSION" >> $GITHUB_STEP_SUMMARY
+        echo '```' >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### 📣 Next steps:" >> $GITHUB_STEP_SUMMARY
+        echo "- [ ] Test installation: \`pip install datacheck-cli==$VERSION\`" >> $GITHUB_STEP_SUMMARY
+        echo "- [ ] Announce on social media" >> $GITHUB_STEP_SUMMARY
+        echo "- [ ] Monitor PyPI downloads" >> $GITHUB_STEP_SUMMARY
+        echo "- [ ] Respond to issues/feedback" >> $GITHUB_STEP_SUMMARY

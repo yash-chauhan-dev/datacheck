@@ -1,0 +1,133 @@
+name: PR Version Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'pyproject.toml'
+
+jobs:
+  check-version-bump:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Need full history to compare with base branch
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+
+    - name: Install Poetry
+      run: |
+        pipx install poetry
+        poetry --version
+
+    - name: Check version was bumped
+      id: version-check
+      run: |
+        # Get current version
+        CURRENT_VERSION=$(poetry version -s)
+        echo "Current version: $CURRENT_VERSION"
+
+        # Get version from base branch (main)
+        git fetch origin ${{ github.base_ref }}
+        git checkout origin/${{ github.base_ref }} -- pyproject.toml
+        BASE_VERSION=$(poetry version -s)
+        echo "Base version: $BASE_VERSION"
+
+        # Restore PR's pyproject.toml
+        git checkout HEAD -- pyproject.toml
+
+        # Compare versions
+        if [ "$CURRENT_VERSION" = "$BASE_VERSION" ]; then
+          echo "## ⚠️ Version Not Bumped" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "The version in \`pyproject.toml\` is still **$CURRENT_VERSION**." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📝 Did you forget to bump the version?" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "If this PR includes user-facing changes, please bump the version:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo '```bash' >> $GITHUB_STEP_SUMMARY
+          echo "# Patch release (bug fixes): 0.1.0 → 0.1.1" >> $GITHUB_STEP_SUMMARY
+          echo "poetry version patch" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "# Minor release (new features): 0.1.0 → 0.2.0" >> $GITHUB_STEP_SUMMARY
+          echo "poetry version minor" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "# Major release (breaking changes): 0.1.0 → 1.0.0" >> $GITHUB_STEP_SUMMARY
+          echo "poetry version major" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "ℹ️ **Note**: If this is a documentation-only or internal change, you can ignore this warning." >> $GITHUB_STEP_SUMMARY
+
+          # Don't fail the check, just warn
+          exit 0
+        else
+          echo "## ✅ Version Bumped" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Version: **$BASE_VERSION** → **$CURRENT_VERSION**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Check if version increased
+          if [ "$CURRENT_VERSION" \> "$BASE_VERSION" ]; then
+            echo "✅ Version increased correctly" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### 🚀 After merge, this will trigger automatic release:" >> $GITHUB_STEP_SUMMARY
+            echo "1. ✅ Tests will run" >> $GITHUB_STEP_SUMMARY
+            echo "2. 📦 Package will be built" >> $GITHUB_STEP_SUMMARY
+            echo "3. 🏷️ Git tag \`v$CURRENT_VERSION\` will be created" >> $GITHUB_STEP_SUMMARY
+            echo "4. 📤 Package will be published to PyPI" >> $GITHUB_STEP_SUMMARY
+            echo "5. 🎉 GitHub release will be created" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Version decreased or invalid: $BASE_VERSION → $CURRENT_VERSION" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
+        fi
+
+    - name: Check CHANGELOG.md updated
+      run: |
+        # Check if CHANGELOG.md was modified in this PR
+        if git diff --name-only origin/${{ github.base_ref }}...HEAD | grep -q "CHANGELOG.md"; then
+          echo "## ✅ CHANGELOG.md Updated" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Great! The changelog has been updated." >> $GITHUB_STEP_SUMMARY
+        else
+          echo "## ⚠️ CHANGELOG.md Not Updated" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Consider adding an entry to \`CHANGELOG.md\` for this change." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Add a new section for the version if it doesn't exist:" >> $GITHUB_STEP_SUMMARY
+          echo '```markdown' >> $GITHUB_STEP_SUMMARY
+          echo "## [$(poetry version -s)] - $(date +%Y-%m-%d)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Added" >> $GITHUB_STEP_SUMMARY
+          echo "- Your new feature" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Fixed" >> $GITHUB_STEP_SUMMARY
+          echo "- Your bug fix" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+          # Don't fail, just warn
+        fi
+
+    - name: Semantic version check
+      run: |
+        CURRENT_VERSION=$(poetry version -s)
+
+        # Validate semver format
+        if [[ ! "$CURRENT_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9.-]+)?(\+[a-zA-Z0-9.-]+)?$ ]]; then
+          echo "## ❌ Invalid Version Format" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Version \`$CURRENT_VERSION\` doesn't follow semantic versioning." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Valid formats: \`1.2.3\`, \`1.2.3-alpha.1\`, \`1.2.3+build.123\`" >> $GITHUB_STEP_SUMMARY
+          exit 1
+        fi
+
+        echo "## ✅ Valid Semantic Version" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "Version \`$CURRENT_VERSION\` follows semantic versioning." >> $GITHUB_STEP_SUMMARY

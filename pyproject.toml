@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "datacheck"
+name = "datacheck-cli"
 version = "0.1.0"
 description = "Lightweight data quality validation CLI tool"
 authors = ["datacheck <hello@datacheck.com>"]
@@ -17,6 +17,7 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
 ]
+packages = [{include = "datacheck"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
