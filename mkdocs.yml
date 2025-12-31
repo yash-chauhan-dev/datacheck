@@ -29,21 +29,14 @@ theme:
     - navigation.instant
     - navigation.tracking
     - navigation.tabs
-    - navigation.tabs.sticky
     - navigation.sections
-    - navigation.expand
     - navigation.top
     - search.suggest
     - search.highlight
     - content.code.copy
-    - content.code.annotate
 
   icon:
     repo: fontawesome/brands/github
-
-  font:
-    text: Roboto
-    code: Roboto Mono
 
 markdown_extensions:
   - admonition
@@ -64,8 +57,6 @@ markdown_extensions:
 
 plugins:
   - search
-  - git-revision-date-localized:
-      enable_creation_date: true
 
 nav:
   - Home: index.md
@@ -106,8 +97,5 @@ extra:
       link: https://github.com/yash-chauhan-dev/datacheck
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/datacheck-cli/
-
-  version:
-    provider: mike
 
 copyright: Copyright &copy; 2025 DataCheck Team

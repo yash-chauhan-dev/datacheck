@@ -8,6 +8,7 @@ on:
       - 'docs/**'
       - 'mkdocs.yml'
       - '.github/workflows/docs.yml'
+      - 'pyproject.toml'
 
 permissions:
   contents: write
@@ -17,16 +18,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Install dependencies
+      - name: Install Poetry
         run: |
-          pip install mkdocs-material
-          pip install mkdocs-git-revision-date-localized-plugin
+          pipx install poetry
+          poetry --version
+
+      - name: Install dependencies
+        run: poetry install --with docs --no-interaction
+
+      - name: Build documentation
+        run: poetry run mkdocs build --strict
 
       - name: Deploy to GitHub Pages
-        run: mkdocs gh-deploy --force
+        run: poetry run mkdocs gh-deploy --force
