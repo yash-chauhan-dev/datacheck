@@ -375,6 +375,42 @@ Brief description of changes
 - [ ] No new warnings
 ```
 
+### Version Bumping (For Releases)
+
+If your PR includes user-facing changes (new features, bug fixes, breaking changes), please bump the version:
+
+**Bump version using Poetry:**
+```bash
+# For bug fixes (0.1.0 → 0.1.1)
+poetry version patch
+
+# For new features (0.1.0 → 0.2.0)
+poetry version minor
+
+# For breaking changes (0.1.0 → 1.0.0)
+poetry version major
+```
+
+**Update CHANGELOG.md:**
+Add a new section at the top describing your changes:
+```markdown
+## [0.2.0] - 2025-01-XX
+
+### Added
+- Your new feature
+
+### Fixed
+- Your bug fix
+```
+
+**Note**: PRs without version bumps are fine for:
+- Documentation updates
+- Test improvements
+- Internal refactoring
+- CI/CD changes
+
+The PR check will remind you if a version bump might be needed, but won't block your PR.
+
 ### Code Review
 
 - Be open to feedback
