@@ -15,11 +15,13 @@ DataCheck supports **two automated release approaches**. Choose the one that fit
 3. Developer updates `CHANGELOG.md`
 4. PR is opened → CI validates version was bumped
 5. PR is merged to `main` → **Automatic release triggered**
-   - ✅ Tests run
-   - 📦 Package built
-   - 🏷️ Git tag created
-   - 📤 Published to PyPI
-   - 🎉 GitHub release created
+   - ⏳ Waits for CI workflow to pass
+   - ✅ Validates version changed and increased
+   - ✅ Runs full test suite (Python 3.10, 3.11, 3.12)
+   - 📦 Builds package
+   - 🏷️ Creates git tag automatically
+   - 📤 Publishes to PyPI
+   - 🎉 Creates GitHub release with changelog
 
 ### Setup
 
@@ -91,14 +93,16 @@ git push origin feature/my-awesome-feature
 #### Step 6: Merge PR
 
 **When PR is merged to `main`:**
-1. Auto-release workflow triggers
-2. Checks version changed
-3. Runs full test suite
-4. Creates git tag `v0.2.0`
-5. Publishes to PyPI
-6. Creates GitHub release
+1. CI workflow runs automatically
+2. Auto-release workflow triggers (waits for CI to pass)
+3. CI must pass ✅ (if CI fails, release is blocked)
+4. Checks version changed
+5. Runs full test suite (double-check after CI)
+6. Creates git tag `v0.2.0`
+7. Publishes to PyPI
+8. Creates GitHub release
 
-**Total time:** ~10 minutes ⏱️
+**Total time:** ~10-15 minutes ⏱️ (includes CI wait)
 
 ### What If I Don't Want to Release?
 
@@ -210,6 +214,7 @@ Both workflows already support trusted publishing.
 Both workflows include:
 
 ### Pre-Release Validation
+- ✅ **CI must pass first**: Auto-release waits for main CI workflow to succeed
 - ✅ Full test suite on Python 3.10, 3.11, 3.12
 - ✅ Linting with ruff
 - ✅ Type checking with mypy
@@ -217,9 +222,20 @@ Both workflows include:
 - ✅ Version increase validation
 
 ### Fail-Safe Mechanisms
+- **CI dependency**: Release blocked if CI workflow fails
 - **Duplicate tag check**: Won't create existing tags
 - **Test failure = no release**: Package only published if all tests pass
+- **Version validation**: Won't release if version decreased
 - **Artifact preservation**: Build artifacts stored for 90 days
+
+### Recommended: Branch Protection Rules
+For additional safety, configure branch protection on `main`:
+1. Go to: Settings → Branches → Add rule for `main`
+2. Enable:
+   - ✅ Require pull request reviews
+   - ✅ Require status checks to pass (select "CI" and "PR Version Check")
+   - ✅ Require branches to be up to date
+3. This ensures PRs can't merge unless CI passes and version is valid
 
 ---
 
@@ -297,6 +313,14 @@ chore: Bump version to 0.2.0
 ### "Version didn't increase"
 **Problem**: New version is not higher than previous.
 **Solution**: Use `poetry version patch/minor/major` to properly bump version.
+
+### "CI workflow failed, release blocked"
+**Problem**: Auto-release is waiting but CI workflow failed.
+**Solution**:
+- Check CI workflow logs: Actions tab → CI workflow
+- Fix the failing tests/linting/type errors
+- Push a fix commit to `main`
+- CI will re-run and auto-release will proceed if it passes
 
 ### "Tests failed"
 **Problem**: Test suite failed, release blocked.
