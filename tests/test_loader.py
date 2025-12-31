@@ -3,7 +3,6 @@
 import sqlite3
 from pathlib import Path
 
-import duckdb
 import pandas as pd
 import pytest
 
@@ -15,6 +14,14 @@ from datacheck.loader import (
     LoaderFactory,
     ParquetLoader,
 )
+
+# Optional DuckDB import for tests
+try:
+    import duckdb
+
+    HAS_DUCKDB = True
+except ImportError:
+    HAS_DUCKDB = False
 
 
 class TestCSVLoader:
@@ -153,7 +160,7 @@ class TestParquetLoader:
             loader.load()
 
 
-@pytest.mark.skip(reason="DuckDB causes segfaults in this environment")
+@pytest.mark.skip(reason="DuckDB tests disabled - causes segfaults and Windows build issues")
 class TestDuckDBLoader:
     """Tests for DuckDBLoader."""
 
@@ -331,7 +338,7 @@ class TestLoaderFactory:
 
         assert isinstance(loader, ParquetLoader)
 
-    @pytest.mark.skip(reason="DuckDB causes segfaults in this environment")
+    @pytest.mark.skip(reason="DuckDB tests disabled - causes segfaults and Windows build issues")
     def test_create_duckdb_loader(self, tmp_path: Path) -> None:
         """Test creating DuckDB loader."""
         db_file = tmp_path / "test.duckdb"
@@ -401,7 +408,7 @@ class TestLoaderFactory:
 
         assert len(df) == 1
 
-    @pytest.mark.skip(reason="DuckDB causes segfaults in this environment")
+    @pytest.mark.skip(reason="DuckDB tests disabled - causes segfaults and Windows build issues")
     def test_load_method_database(self, tmp_path: Path) -> None:
         """Test LoaderFactory.load() method with database."""
         db_file = tmp_path / "test.duckdb"
