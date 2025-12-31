@@ -5,6 +5,38 @@ All notable changes to DataCheck will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2025-12-31
+
+### 🚀 Enhancements
+
+#### Documentation
+- **Comprehensive documentation site**: Added 28-page documentation with MkDocs Material
+- **Getting Started guides**: Installation, Quick Start, and First Validation tutorials
+- **Real-world use cases**: Detailed examples with ROI metrics (6x faster setup, $50-100/month savings)
+- **Integration guides**: CI/CD, GitHub Actions, Airflow, ML pipelines, and more
+- **Professional formatting**: Simplified and cleaned up documentation for better readability
+
+#### Distribution & Release
+- **PyPI package rename**: Changed from `datacheck` to `datacheck-cli` to avoid conflicts
+- **Automated release workflow**: Auto-release on version bumps with comprehensive testing
+- **CI/CD integration**: Tag-based releases with PyPI publishing
+- **GitHub Pages deployment**: Automatic documentation deployment on main branch updates
+
+#### Developer Experience
+- **Improved project structure**: Added `packages` configuration for Poetry
+- **Documentation dependencies**: Added mkdocs, mkdocs-material, and plugins to docs group
+- **Better CI/CD workflows**: Streamlined release process with proper dependency chains
+
+### 🐛 Bug Fixes
+- **Poetry packaging**: Fixed installation error by adding `packages = [{include = "datacheck"}]`
+- **Workflow optimization**: Removed problematic wait-for-ci job that was causing failures
+
+### 📚 Documentation
+- **28 new documentation pages** covering all features and use cases
+- **4 real-world scenarios** with before/after comparisons and impact metrics
+- **Complete API reference** for CLI and Python usage
+- **Contribution guidelines** for developers
+
 ## [0.1.0] - 2025-01-01
 
 ### 🎉 Initial Release
