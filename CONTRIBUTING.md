@@ -1,270 +1,527 @@
 # Contributing to DataCheck
 
-Thank you for your interest in contributing to DataCheck! This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to DataCheck! This guide will help you get started.
+
+## Table of Contents
+
+- [Code of Conduct](#code-of-conduct)
+- [Getting Started](#getting-started)
+- [Development Setup](#development-setup)
+- [Development Workflow](#development-workflow)
+- [Coding Standards](#coding-standards)
+- [Testing](#testing)
+- [Submitting Changes](#submitting-changes)
+- [Adding Features](#adding-features)
+
+---
 
 ## Code of Conduct
 
-This project adheres to a code of conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to hello@datacheck.com.
+Be respectful, inclusive, and professional. We're all here to build better tools together.
 
-## How to Contribute
+---
 
-### Reporting Bugs
-
-Before creating bug reports, please check the issue list as you might find out that you don't need to create one. When you are creating a bug report, please include as many details as possible:
-
-- **Use a clear and descriptive title**
-- **Describe the exact steps to reproduce the problem**
-- **Provide specific examples** (sample data files, configuration files)
-- **Describe the behavior you observed** and what you expected to see
-- **Include screenshots** if relevant
-- **Include your environment details** (OS, Python version, DataCheck version)
-
-### Suggesting Enhancements
-
-Enhancement suggestions are tracked as GitHub issues. When creating an enhancement suggestion, please include:
-
-- **Use a clear and descriptive title**
-- **Provide a detailed description** of the suggested enhancement
-- **Provide examples** of how the enhancement would be used
-- **Explain why this enhancement would be useful**
-
-### Pull Requests
-
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Run tests (`pytest`)
-5. Run linting (`ruff check datacheck tests`)
-6. Run type checking (`mypy datacheck`)
-7. Commit your changes (`git commit -m 'Add amazing feature'`)
-8. Push to the branch (`git push origin feature/amazing-feature`)
-9. Open a Pull Request
-
-## Development Setup
+## Getting Started
 
 ### Prerequisites
 
 - Python 3.10 or higher
-- Poetry 1.6+
+- Poetry (for dependency management)
 - Git
 
-### Setup Steps
+### Quick Setup
 
 ```bash
-# Clone your fork
-git clone https://github.com/YOUR_USERNAME/datacheck.git
+# Clone the repository
+git clone https://github.com/yash-chauhan-dev/datacheck.git
 cd datacheck
 
 # Install dependencies
 poetry install
 
-# Activate virtual environment
-poetry shell
-
 # Install pre-commit hooks
-pre-commit install
+poetry run pre-commit install
 
 # Run tests to verify setup
-pytest
+poetry run pytest
 ```
 
-### Development Workflow
+---
 
-1. **Create a branch** for your work:
-   ```bash
-   git checkout -b feature/my-new-feature
-   ```
+## Development Setup
 
-2. **Make your changes** following the code style guidelines
+### Install Development Dependencies
 
-3. **Write tests** for your changes
+```bash
+poetry install --with dev
+```
 
-4. **Run the test suite**:
-   ```bash
-   pytest
-   ```
+This installs:
+- `pytest` - Testing framework
+- `pytest-cov` - Coverage reporting
+- `mypy` - Type checking
+- `ruff` - Linting and formatting
+- `pre-commit` - Git hooks
 
-5. **Check code coverage**:
-   ```bash
-   pytest --cov=datacheck --cov-report=term-missing
-   ```
+### IDE Setup
 
-6. **Run linting**:
-   ```bash
-   ruff check datacheck tests
-   ```
+**VS Code** (recommended `.vscode/settings.json`):
+```json
+{
+  "python.linting.enabled": true,
+  "python.linting.mypyEnabled": true,
+  "python.formatting.provider": "none",
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false
+}
+```
 
-7. **Run type checking**:
-   ```bash
-   mypy datacheck
-   ```
+**PyCharm**:
+- Enable mypy plugin
+- Set ruff as the formatter
+- Configure pytest as the test runner
 
-8. **Format code**:
-   ```bash
-   ruff format datacheck tests
-   ```
+---
 
-9. **Commit your changes** using conventional commits:
-   ```bash
-   git commit -m "feat: add new validation rule"
-   ```
+## Development Workflow
 
-10. **Push to your fork** and create a Pull Request
+### 1. Create a Branch
 
-## Code Style Guidelines
+```bash
+git checkout -b feature/your-feature-name
+# or
+git checkout -b fix/bug-description
+```
+
+Branch naming:
+- `feature/` - New features
+- `fix/` - Bug fixes
+- `docs/` - Documentation changes
+- `refactor/` - Code refactoring
+- `test/` - Test improvements
+
+### 2. Make Changes
+
+Write your code following our [coding standards](#coding-standards).
+
+### 3. Test Your Changes
+
+```bash
+# Run all tests
+poetry run pytest
+
+# Run with coverage
+poetry run pytest --cov=datacheck --cov-report=html
+
+# Run specific tests
+poetry run pytest tests/test_cli.py -v
+
+# Run type checking
+poetry run mypy datacheck/
+
+# Run linting
+poetry run ruff check datacheck/ tests/
+```
+
+### 4. Commit Your Changes
+
+```bash
+git add .
+git commit -m "feat: add custom rule support"
+```
+
+Commit message format:
+```
+<type>: <description>
+
+[optional body]
+
+[optional footer]
+```
+
+Types:
+- `feat` - New feature
+- `fix` - Bug fix
+- `docs` - Documentation
+- `test` - Tests
+- `refactor` - Code refactoring
+- `chore` - Maintenance
+
+Examples:
+```
+feat: add min_length validation rule
+fix: handle empty CSV files correctly
+docs: update configuration guide
+test: add tests for unique constraint
+```
+
+### 5. Push and Create PR
+
+```bash
+git push origin feature/your-feature-name
+```
+
+Then create a Pull Request on GitHub.
+
+---
+
+## Coding Standards
 
 ### Python Style
 
-- Follow PEP 8
-- Use type hints for all function signatures
-- Maximum line length: 100 characters
-- Use docstrings for all public functions and classes
+We follow:
+- **PEP 8** for code style
+- **PEP 257** for docstrings
+- **Type hints** for all functions
 
-### Docstring Format
+### Code Formatting
+
+```bash
+# Auto-format code
+poetry run ruff format datacheck/ tests/
+
+# Check formatting
+poetry run ruff check datacheck/ tests/
+```
+
+### Type Checking
+
+All code must pass mypy:
+
+```bash
+poetry run mypy datacheck/
+```
+
+### Docstrings
+
+Use Google-style docstrings:
 
 ```python
-def my_function(arg1: str, arg2: int) -> bool:
-    """Short description of the function.
-
-    Longer description if needed, explaining the purpose and behavior
-    in more detail.
+def validate_data(df: pd.DataFrame, rules: dict[str, Any]) -> ValidationSummary:
+    """Validate DataFrame against rules.
 
     Args:
-        arg1: Description of arg1
-        arg2: Description of arg2
+        df: DataFrame to validate
+        rules: Dictionary of validation rules
 
     Returns:
-        Description of return value
+        Validation summary with results
 
     Raises:
-        ValueError: When and why this is raised
-        TypeError: When and why this is raised
+        ValidationError: If validation configuration is invalid
 
     Example:
-        >>> my_function("test", 42)
-        True
+        >>> rules = {"not_null": True, "min": 0}
+        >>> result = validate_data(df, rules)
+        >>> assert result.all_passed
     """
     pass
 ```
 
-### Commit Message Format
+### Code Organization
 
-We follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
+```python
+# 1. Imports (grouped and sorted)
+from pathlib import Path
+from typing import Any
 
-```
-<type>(<scope>): <subject>
+import pandas as pd
 
-<body>
+from datacheck.exceptions import ValidationError
+from datacheck.results import ValidationSummary
 
-<footer>
-```
+# 2. Constants
+DEFAULT_TIMEOUT = 30
+MAX_RETRIES = 3
 
-Types:
-- `feat`: New feature
-- `fix`: Bug fix
-- `docs`: Documentation changes
-- `style`: Code style changes (formatting, etc.)
-- `refactor`: Code refactoring
-- `test`: Adding or updating tests
-- `chore`: Maintenance tasks
+# 3. Classes
+class MyClass:
+    """Class docstring."""
+    pass
 
-Examples:
-```
-feat(rules): add support for custom regex patterns
-fix(loader): handle missing CSV headers correctly
-docs(readme): update installation instructions
-test(engine): add integration tests for validation workflow
+# 4. Functions
+def my_function() -> None:
+    """Function docstring."""
+    pass
 ```
 
-## Testing Guidelines
+---
 
-### Writing Tests
-
-- Write tests for all new features
-- Update tests when changing existing functionality
-- Aim for 90%+ code coverage
-- Use descriptive test names
-- Follow the Arrange-Act-Assert pattern
+## Testing
 
 ### Test Structure
 
+```
+tests/
+├── conftest.py          # Shared fixtures
+├── helpers.py           # Test utilities
+├── test_cli.py         # CLI tests
+├── test_rules.py       # Rule tests
+└── ...
+```
+
+### Writing Tests
+
 ```python
-def test_feature_description():
-    """Test that feature behaves correctly in specific scenario."""
-    # Arrange - Set up test data and conditions
-    data = create_test_data()
+import pytest
+from datacheck.rules import NotNullRule
 
-    # Act - Execute the function being tested
-    result = function_under_test(data)
+@pytest.mark.unit
+class TestNotNullRule:
+    """Tests for NotNullRule."""
 
-    # Assert - Verify the results
-    assert result.is_valid
-    assert len(result.failures) == 0
+    def test_passes_with_no_nulls(self, sample_dataframe):
+        """Test rule passes when no nulls present."""
+        # Arrange
+        rule = NotNullRule(column="age")
+
+        # Act
+        result = rule.validate(sample_dataframe)
+
+        # Assert
+        assert result.passed
+        assert result.failed_rows == 0
+
+    def test_fails_with_nulls(self, dataframe_with_nulls):
+        """Test rule fails when nulls present."""
+        rule = NotNullRule(column="age")
+        result = rule.validate(dataframe_with_nulls)
+
+        assert not result.passed
+        assert result.failed_rows > 0
 ```
 
-### Running Tests
+### Test Markers
 
+Use markers to categorize tests:
+
+```python
+@pytest.mark.unit         # Unit test
+@pytest.mark.integration  # Integration test
+@pytest.mark.slow         # Slow test
+@pytest.mark.cli          # CLI test
+```
+
+Run specific categories:
 ```bash
-# Run all tests
-pytest
-
-# Run specific test file
-pytest tests/test_rules.py
-
-# Run specific test
-pytest tests/test_rules.py::test_not_null_rule
-
-# Run with verbose output
-pytest -v
-
-# Run with coverage
-pytest --cov=datacheck --cov-report=html
+poetry run pytest -m unit
+poetry run pytest -m "not slow"
 ```
+
+### Coverage Requirements
+
+- Minimum coverage: **70%**
+- Aim for: **90%+**
+- Check coverage:
+  ```bash
+  poetry run pytest --cov=datacheck --cov-report=html
+  open htmlcov/index.html
+  ```
+
+---
+
+## Submitting Changes
+
+### Pull Request Process
+
+1. **Update Documentation**
+   - Update README.md if adding features
+   - Add docstrings to new functions
+   - Update examples if needed
+
+2. **Ensure Tests Pass**
+   ```bash
+   poetry run pytest
+   poetry run mypy datacheck/
+   poetry run ruff check datacheck/ tests/
+   ```
+
+3. **Update CHANGELOG** (if applicable)
+
+4. **Create Pull Request**
+   - Clear title describing the change
+   - Description explaining what and why
+   - Link to related issues
+
+### PR Template
+
+```markdown
+## Description
+Brief description of changes
+
+## Type of Change
+- [ ] Bug fix
+- [ ] New feature
+- [ ] Breaking change
+- [ ] Documentation update
+
+## Testing
+- [ ] Tests pass locally
+- [ ] Added new tests
+- [ ] Updated documentation
+
+## Checklist
+- [ ] Code follows style guidelines
+- [ ] Self-reviewed code
+- [ ] Commented complex code
+- [ ] Updated documentation
+- [ ] No new warnings
+```
+
+### Code Review
+
+- Be open to feedback
+- Respond to comments promptly
+- Make requested changes
+- Keep discussions professional
+
+---
+
+## Adding Features
+
+### Adding a New Validation Rule
+
+1. **Create rule class** in `datacheck/rules.py`:
+
+```python
+class MyNewRule(Rule):
+    """Validates something specific.
+
+    Args:
+        column: Column name to validate
+        threshold: Rule-specific parameter
+    """
+
+    def __init__(self, column: str, threshold: int) -> None:
+        super().__init__(column)
+        self.threshold = threshold
+
+    def validate(self, df: pd.DataFrame) -> RuleResult:
+        """Execute validation rule.
+
+        Args:
+            df: DataFrame to validate
+
+        Returns:
+            Rule result with pass/fail status
+        """
+        # Implementation here
+        pass
+
+    def description(self) -> str:
+        """Get human-readable description."""
+        return f"Values must meet threshold {self.threshold}"
+```
+
+2. **Register in RuleFactory** (`datacheck/rules.py`):
+
+```python
+class RuleFactory:
+    @staticmethod
+    def create_rule(rule_name: str, column: str, value: Any) -> Rule:
+        if rule_name == "my_new_rule":
+            return MyNewRule(column=column, threshold=value)
+        # ... existing rules
+```
+
+3. **Add tests** (`tests/test_rules.py`):
+
+```python
+class TestMyNewRule:
+    def test_passes_when_valid(self):
+        # Test implementation
+        pass
+
+    def test_fails_when_invalid(self):
+        # Test implementation
+        pass
+```
+
+4. **Update documentation**:
+   - Add to README.md
+   - Add example to examples/
+   - Update validation rules reference
+
+### Adding a New Data Loader
+
+1. **Create loader class** in `datacheck/loader.py`:
+
+```python
+class MyFormatLoader(DataLoader):
+    """Loads data from MyFormat files."""
+
+    def load(self) -> pd.DataFrame:
+        """Load data into DataFrame."""
+        # Implementation
+        pass
+```
+
+2. **Register in LoaderFactory**
+
+3. **Add tests**
+
+4. **Update documentation**
+
+---
 
 ## Project Structure
 
 ```
 datacheck/
-├── datacheck/           # Main package
-│   ├── __init__.py     # Package initialization
-│   ├── cli.py          # CLI implementation
-│   ├── config.py       # Configuration parsing
+├── datacheck/
+│   ├── __init__.py
+│   ├── cli.py          # CLI interface
+│   ├── config.py       # Configuration
+│   ├── engine.py       # Validation engine
 │   ├── loader.py       # Data loaders
 │   ├── rules.py        # Validation rules
-│   ├── engine.py       # Validation engine
 │   ├── results.py      # Result models
 │   ├── output.py       # Output formatting
 │   └── exceptions.py   # Custom exceptions
-├── tests/              # Test suite
-│   ├── conftest.py     # Pytest fixtures
-│   ├── test_*.py       # Test files
-│   └── fixtures/       # Test data files
+├── tests/
+│   ├── conftest.py     # Test fixtures
+│   ├── helpers.py      # Test utilities
+│   └── test_*.py       # Test files
 ├── examples/           # Example files
-└── docs/               # Documentation
+├── docs/              # Documentation
+├── pyproject.toml     # Project configuration
+└── README.md          # Main documentation
 ```
 
-## Documentation
-
-- Update documentation when adding new features
-- Include examples in docstrings
-- Update README.md for user-facing changes
-- Add entries to CHANGELOG.md
+---
 
 ## Release Process
 
+(For maintainers)
+
 1. Update version in `pyproject.toml`
-2. Update `CHANGELOG.md`
-3. Create a new tag: `git tag v0.1.0`
-4. Push tag: `git push origin v0.1.0`
-5. GitHub Actions will automatically build and publish to PyPI
+2. Update CHANGELOG.md
+3. Create git tag: `git tag -a v0.2.0 -m "Release v0.2.0"`
+4. Push tag: `git push origin v0.2.0`
+5. GitHub Actions will build and publish to PyPI
 
-## Questions?
+---
 
-If you have questions, please:
-1. Check existing issues and discussions
-2. Create a new issue with the `question` label
-3. Reach out to maintainers at hello@datacheck.com
+## Getting Help
 
-## License
+- **Questions**: Open a [Discussion](https://github.com/yash-chauhan-dev/datacheck/discussions)
+- **Bugs**: Open an [Issue](https://github.com/yash-chauhan-dev/datacheck/issues)
+- **Feature Requests**: Open an [Issue](https://github.com/yash-chauhan-dev/datacheck/issues) with `enhancement` label
 
-By contributing, you agree that your contributions will be licensed under the MIT License.
+---
+
+## Recognition
+
+Contributors will be:
+- Listed in README.md
+- Mentioned in release notes
+- Given credit in commit messages
+
+Thank you for contributing to DataCheck! 🎉
