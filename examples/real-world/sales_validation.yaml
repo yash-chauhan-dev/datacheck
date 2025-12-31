@@ -1,0 +1,62 @@
+# Real-World Example: E-Commerce Sales Data Validation
+# Ensures data quality for sales analytics and reporting
+
+checks:
+  # Order ID validation
+  - name: order_id_format
+    column: order_id
+    rules:
+      not_null: true
+      unique: true
+      regex: "^ORD-\\d{4}-\\d{3}$"  # Format: ORD-YYYY-###
+
+  # Customer ID validation
+  - name: customer_id_format
+    column: customer_id
+    rules:
+      not_null: true
+      regex: "^CUST-\\d{4}$"  # Format: CUST-####
+
+  # Product ID validation
+  - name: product_id_format
+    column: product_id
+    rules:
+      not_null: true
+      regex: "^PROD-\\d{3}$"  # Format: PROD-###
+
+  # Quantity validation
+  - name: quantity_validation
+    column: quantity
+    rules:
+      not_null: true
+      min: 1              # At least 1 item
+      max: 1000           # Maximum 1000 items per order
+
+  # Unit price validation
+  - name: unit_price_validation
+    column: unit_price
+    rules:
+      not_null: true
+      min: 0.01           # Minimum price $0.01
+      max: 100000         # Maximum price $100,000
+
+  # Total amount validation
+  - name: total_amount_validation
+    column: total_amount
+    rules:
+      not_null: true
+      min: 0.01           # Minimum total $0.01
+
+  # Order status validation
+  - name: status_validation
+    column: status
+    rules:
+      not_null: true
+      allowed_values: ["pending", "processing", "shipped", "delivered", "completed", "cancelled"]
+
+  # Payment method validation
+  - name: payment_method_validation
+    column: payment_method
+    rules:
+      not_null: true
+      allowed_values: ["credit_card", "debit_card", "paypal", "bank_transfer", "cash"]

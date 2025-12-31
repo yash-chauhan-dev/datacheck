@@ -1,0 +1,6 @@
+user_id,username,email,age,country,account_type,registration_date,last_login,is_verified
+U12345,alice_j,alice.j@example.com,28,US,premium,2023-06-15,2024-12-20,true
+U12346,bob_smith,bob.smith@example.com,35,UK,free,2023-07-22,2024-12-19,true
+U12347,carol_w,carol.white@example.com,42,CA,premium,2023-08-10,2024-12-18,true
+U12348,david_b,david.b@example.com,31,AU,free,2023-09-05,2024-12-17,false
+U12349,eve_d,eve.davis@example.com,29,DE,enterprise,2023-10-12,2024-12-21,true

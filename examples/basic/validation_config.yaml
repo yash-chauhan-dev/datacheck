@@ -1,0 +1,32 @@
+# Basic DataCheck Validation Configuration
+# This example validates employee data with simple rules
+
+checks:
+  # Validate age column
+  - name: age_validation
+    column: age
+    rules:
+      not_null: true    # No missing ages
+      min: 18           # Minimum age 18
+      max: 120          # Maximum age 120
+
+  # Validate name column
+  - name: name_validation
+    column: name
+    rules:
+      not_null: true    # No missing names
+      regex: "^.{2,}$"  # At least 2 characters
+
+  # Validate email column
+  - name: email_validation
+    column: email
+    rules:
+      not_null: true                    # No missing emails
+      regex: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"  # Valid email format
+
+  # Validate salary column
+  - name: salary_validation
+    column: salary
+    rules:
+      not_null: true    # No missing salaries
+      min: 0            # Non-negative salary

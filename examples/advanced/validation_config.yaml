@@ -1,0 +1,62 @@
+# Advanced DataCheck Validation Configuration
+# This example demonstrates complex validation rules for customer data
+
+checks:
+  # Validate customer_id format
+  - name: customer_id_format
+    column: customer_id
+    rules:
+      not_null: true
+      unique: true                    # Each customer ID must be unique
+      regex: "^C\\d{3}$"             # Format: C followed by 3 digits
+
+  # Validate first name
+  - name: first_name_validation
+    column: first_name
+    rules:
+      not_null: true
+      regex: "^[A-Za-z]{2,50}$"      # 2-50 letters only
+
+  # Validate last name
+  - name: last_name_validation
+    column: last_name
+    rules:
+      not_null: true
+      regex: "^[A-Za-z]{2,50}$"      # 2-50 letters only
+
+  # Validate email with complex regex
+  - name: email_validation
+    column: email
+    rules:
+      not_null: true
+      unique: true                                            # Each email must be unique
+      regex: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"  # Valid email format
+
+  # Validate phone numbers (international formats)
+  - name: phone_validation
+    column: phone
+    rules:
+      not_null: true
+      regex: "^\\+[0-9]{1,3}-[0-9-]+$"  # International format: +country-number
+
+  # Validate country codes
+  - name: country_validation
+    column: country
+    rules:
+      not_null: true
+      allowed_values: ["USA", "UK", "Canada", "Australia", "Germany", "France"]  # Supported countries
+
+  # Validate subscription tiers
+  - name: subscription_tier_validation
+    column: subscription_tier
+    rules:
+      not_null: true
+      allowed_values: ["basic", "premium", "enterprise"]  # Available tiers
+
+  # Validate monthly spend
+  - name: monthly_spend_validation
+    column: monthly_spend
+    rules:
+      not_null: true
+      min: 0                          # Non-negative
+      max: 10000                      # Reasonable maximum

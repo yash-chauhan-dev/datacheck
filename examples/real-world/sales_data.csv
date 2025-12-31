@@ -1,0 +1,6 @@
+order_id,customer_id,product_id,quantity,unit_price,total_amount,order_date,status,payment_method
+ORD-2024-001,CUST-5001,PROD-789,2,49.99,99.98,2024-01-15,completed,credit_card
+ORD-2024-002,CUST-5002,PROD-123,1,129.99,129.99,2024-01-16,completed,paypal
+ORD-2024-003,CUST-5001,PROD-456,3,25.50,76.50,2024-01-17,pending,credit_card
+ORD-2024-004,CUST-5003,PROD-789,1,49.99,49.99,2024-01-18,completed,debit_card
+ORD-2024-005,CUST-5004,PROD-234,5,15.99,79.95,2024-01-19,shipped,credit_card

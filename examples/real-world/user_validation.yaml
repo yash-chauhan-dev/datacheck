@@ -1,0 +1,49 @@
+# Real-World Example: User Account Data Validation
+# Validates user data for SaaS applications
+
+checks:
+  # User ID validation
+  - name: user_id_format
+    column: user_id
+    rules:
+      not_null: true
+      unique: true
+      regex: "^U\\d{5}$"  # Format: U followed by 5 digits
+
+  # Username validation
+  - name: username_validation
+    column: username
+    rules:
+      not_null: true
+      unique: true
+      regex: "^[a-z0-9_]{3,30}$"  # 3-30 chars: lowercase, numbers, underscores
+
+  # Email validation
+  - name: email_validation
+    column: email
+    rules:
+      not_null: true
+      unique: true
+      regex: "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+
+  # Age validation
+  - name: age_validation
+    column: age
+    rules:
+      not_null: true
+      min: 13             # Minimum age requirement
+      max: 150            # Maximum realistic age
+
+  # Country code validation (ISO 3166-1 alpha-2)
+  - name: country_validation
+    column: country
+    rules:
+      not_null: true
+      regex: "^[A-Z]{2}$"  # Two uppercase letters
+
+  # Account type validation
+  - name: account_type_validation
+    column: account_type
+    rules:
+      not_null: true
+      allowed_values: ["free", "premium", "enterprise"]

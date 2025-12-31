@@ -1,0 +1,6 @@
+customer_id,first_name,last_name,email,phone,country,signup_date,subscription_tier,monthly_spend
+C001,Alice,Johnson,alice.j@example.com,+1-555-0101,USA,2024-01-15,premium,129.99
+C002,Bob,Smith,bob.smith@example.com,+1-555-0102,USA,2024-02-20,basic,29.99
+C003,Carol,White,carol.w@example.com,+44-20-7123-4567,UK,2024-03-10,premium,149.99
+C004,David,Brown,david.b@example.com,+1-555-0104,Canada,2024-04-05,basic,29.99
+C005,Eve,Davis,eve.davis@example.com,+61-2-9876-5432,Australia,2024-05-12,enterprise,299.99
