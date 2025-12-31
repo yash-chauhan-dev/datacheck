@@ -2,6 +2,15 @@
 
 Step-by-step guide to publish DataCheck v0.1.0 to PyPI.
 
+> **🚀 NEW: Automated Release Pipeline Available!**
+>
+> We now have an automated release pipeline that handles everything for you!
+> Just push a git tag and it automatically tests, builds, publishes to PyPI, and creates a GitHub release.
+>
+> **See [`AUTOMATED_RELEASE.md`](AUTOMATED_RELEASE.md) for the easier automated approach.**
+>
+> This guide covers the manual release process (useful for understanding the steps or troubleshooting).
+
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
