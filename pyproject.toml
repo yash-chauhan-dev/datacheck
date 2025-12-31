@@ -91,18 +91,51 @@ addopts = [
     "--cov=datacheck",
     "--cov-report=term-missing",
     "--cov-report=html",
+    "--cov-report=json",
+    "--cov-fail-under=70",
+    "-ra",  # Show all test summary info
+    "--tb=short",  # Shorter traceback format
+]
+markers = [
+    "unit: Unit tests that don't require external dependencies",
+    "integration: Integration tests that test multiple components",
+    "slow: Tests that take longer to run",
+    "cli: CLI-specific tests",
+    "loader: Data loader tests",
+    "rules: Validation rules tests",
+    "config: Configuration tests",
+    "engine: Validation engine tests",
+    "output: Output formatting tests",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning:typer.*",  # Ignore typer deprecation warnings
+    "ignore::DeprecationWarning:click.*",  # Ignore click deprecation warnings
+    "ignore::pandas.errors.SettingWithCopyWarning",  # Ignore pandas copy warnings
 ]
 
 [tool.coverage.run]
 source = ["datacheck"]
-omit = ["tests/*"]
+omit = ["tests/*", "**/__main__.py"]
+branch = true  # Enable branch coverage
 
 [tool.coverage.report]
+precision = 2
+show_missing = true
+skip_covered = false
 exclude_lines = [
     "pragma: no cover",
     "def __repr__",
+    "def __str__",
     "raise AssertionError",
     "raise NotImplementedError",
     "if __name__ == .__main__.:",
     "if TYPE_CHECKING:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
 ]
+
+[tool.coverage.html]
+directory = "htmlcov"
+
+[tool.coverage.json]
+output = "coverage.json"

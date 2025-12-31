@@ -57,3 +57,4 @@ poetry.lock
 *.db
 *.sqlite
 *.parquet
+coverage.json
