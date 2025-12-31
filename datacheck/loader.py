@@ -16,7 +16,6 @@ try:
     HAS_DUCKDB = True
 except ImportError:
     HAS_DUCKDB = False
-    duckdb = None  # type: ignore[assignment]
 
 
 class DataLoader(ABC):
