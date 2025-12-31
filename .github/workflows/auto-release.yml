@@ -10,26 +10,9 @@ on:
 permissions:
   contents: write
   id-token: write
-  actions: read  # Required to check workflow status
 
 jobs:
-  wait-for-ci:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Wait for CI workflow to complete
-      uses: lewagon/wait-on-check-action@v1.3.4
-      with:
-        ref: ${{ github.sha }}
-        check-name: 'CI'  # Name of the CI workflow check
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        wait-interval: 10
-        allowed-conclusions: success
-
-    - name: CI passed
-      run: echo "✅ CI workflow passed successfully"
-
   check-version:
-    needs: wait-for-ci
     runs-on: ubuntu-latest
     outputs:
       version-changed: ${{ steps.check.outputs.changed }}
