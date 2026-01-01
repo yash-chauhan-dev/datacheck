@@ -12,6 +12,9 @@ hero:
     - theme: alt
       text: View Examples
       link: /examples/quick-start
+  image:
+    src: /datacheck/hero.svg
+    alt: DataCheck Data Validation
 
 features:
   - icon: ⚡
