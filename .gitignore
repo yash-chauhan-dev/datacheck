@@ -48,7 +48,13 @@ dmypy.json
 
 # Documentation
 docs/_build/
+docs/.vitepress/dist
+docs/.vitepress/cache
 site/
+
+# Node.js
+node_modules/
+package-lock.json
 
 # Poetry
 poetry.lock

@@ -41,11 +41,6 @@ pre-commit = "^3.5.0"
 types-pyyaml = "^6.0.0"
 pandas-stubs = "^2.0.0"
 
-[tool.poetry.group.docs.dependencies]
-mkdocs = "^1.5.0"
-mkdocs-material = "^9.5.0"
-mkdocs-git-revision-date-localized-plugin = "^1.2.0"
-
 [tool.poetry.scripts]
 datacheck = "datacheck.cli:app"
 
