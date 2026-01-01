@@ -14,6 +14,7 @@ export default {
     nav: [
       { text: 'Guide', link: '/guide/getting-started' },
       { text: 'Examples', link: '/examples/quick-start' },
+      { text: 'Use Cases', link: '/use-cases/' },
       { text: 'API Reference', link: '/reference/cli' },
     ],
 
