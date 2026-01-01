@@ -6,36 +6,54 @@ on:
       - main
     paths:
       - 'docs/**'
-      - 'mkdocs.yml'
+      - 'package.json'
       - '.github/workflows/docs.yml'
-      - 'pyproject.toml'
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          python-version: '3.12'
+          node-version: 20
+          cache: npm
 
-      - name: Install Poetry
-        run: |
-          pipx install poetry
-          poetry --version
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
       - name: Install dependencies
-        run: poetry install --with docs --no-interaction
+        run: npm ci
 
-      - name: Build documentation
-        run: poetry run mkdocs build --strict
+      - name: Build with VitePress
+        run: npm run docs:build
 
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/.vitepress/dist
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
-        run: poetry run mkdocs gh-deploy --force
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,101 +1,233 @@
 # CLI Reference
 
-Complete reference for DataCheck command-line interface.
-
----
-
 ## Commands
 
 ### validate
 
-Validate data files against validation rules.
+Validate data file against configured quality rules.
 
 ```bash
-datacheck validate <file> [OPTIONS]
+datacheck validate <file> [options]
 ```
 
-**Arguments**:
+**Arguments:**
+- `<file>` - Path to data file (CSV, Parquet, or database)
 
-- `file` - Path to data file (CSV, Parquet, or database)
-
-**Options**:
-
+**Options:**
 - `--config PATH` - Path to validation config file (YAML)
-- `--format FORMAT` - Output format: `terminal` (default) or `json`
-- `--json-output PATH` - Save JSON output to file
-- `--table NAME` - Table name (for database files)
+- `--output FORMAT` - Output format: `terminal` (default) or `json`
 
-**Examples**:
-
+**Examples:**
 ```bash
 # Basic validation
-datacheck validate data.csv --config rules.yaml
+datacheck validate users.csv --config rules.yaml
 
 # JSON output
-datacheck validate data.csv --config rules.yaml --format json
+datacheck validate users.csv --config rules.yaml --output json
 
-# Save JSON to file
-datacheck validate data.csv --config rules.yaml --format json --json-output results.json
+# Auto-discovery (.datacheck.yaml)
+datacheck validate users.csv
 
 # Database table
-datacheck validate data.db --table customers --config rules.yaml
+datacheck validate app.db::users --config rules.yaml
+
+# Parquet file
+datacheck validate data.parquet --config rules.yaml
 ```
 
 ---
 
 ### version
 
-Show DataCheck version.
+Display version information.
 
 ```bash
-datacheck --version
 datacheck version
+```
+
+**Output:**
+```
+DataCheck 0.1.1
 ```
 
 ---
 
-### help
+## File Formats
 
-Show help information.
+### CSV Files
+```bash
+datacheck validate data.csv --config rules.yaml
+```
+
+### Parquet Files
+```bash
+datacheck validate data.parquet --config rules.yaml
+```
+
+### SQLite Database
+```bash
+# Format: database.db::table_name
+datacheck validate app.db::users --config rules.yaml
+```
+
+### DuckDB Database (Linux/macOS)
+```bash
+# Requires: pip install datacheck-cli[duckdb]
+datacheck validate analytics.duckdb::events --config rules.yaml
+```
+
+---
+
+## Output Formats
+
+### Terminal Output (Default)
+
+Beautiful, colored output for humans.
 
 ```bash
-datacheck --help
-datacheck validate --help
+datacheck validate data.csv --config rules.yaml
+```
+
+**Output:**
+```
+╭──────────────────────────────╮
+│ DataCheck Validation Results │
+╰──────────────────────────────╯
+
+✗ VALIDATION FAILED
+
+Check: email_format
+├─ Column: email
+├─ Rule: regex
+├─ Failed: 2/100 rows (2.0%)
+└─ Sample failures: [15, 42]
+
+Summary:
+  Total Rules: 5
+  Passed: 3
+  Failed: 2
+```
+
+### JSON Output
+
+Machine-readable output for automation.
+
+```bash
+datacheck validate data.csv --config rules.yaml --output json
+```
+
+**Output:**
+```json
+{
+  "summary": {
+    "total_checks": 5,
+    "passed": 3,
+    "failed": 2,
+    "errors": 0
+  },
+  "checks": [
+    {
+      "name": "email_format",
+      "column": "email",
+      "rule": "regex",
+      "status": "failed",
+      "failures": {
+        "count": 2,
+        "percentage": 2.0,
+        "sample_rows": [15, 42]
+      }
+    }
+  ]
+}
 ```
 
 ---
 
 ## Exit Codes
 
-| Code | Meaning |
-|------|---------|
-| 0 | Success - all validations passed |
-| 1 | Failed - some validations failed |
-| 2 | Config Error - configuration file error |
-| 3 | Data Error - data loading error |
-| 4 | Runtime Error - unexpected error |
+DataCheck uses standard exit codes for CI/CD integration:
 
-See [Exit Codes](../user-guide/exit-codes.md) for details.
+| Code | Meaning | Action |
+|------|---------|--------|
+| `0` | All validations passed | Continue pipeline |
+| `1` | Some validations failed | Fail build |
+| `2` | Configuration error | Fix config file |
+| `3` | Data loading error | Check file path/format |
+| `4` | Runtime error | Report bug |
+
+**Usage in scripts:**
+```bash
+datacheck validate data.csv --config rules.yaml
+if [ $? -eq 0 ]; then
+    echo "✅ Validation passed"
+else
+    echo "❌ Validation failed"
+    exit 1
+fi
+```
 
 ---
 
-## Configuration File Auto-Discovery
+## Config Auto-discovery
 
-If `--config` is not specified, DataCheck looks for:
+Place `.datacheck.yaml` in your working directory:
 
-1. `.datacheck.yaml`
-2. `.datacheck.yml`
-3. `datacheck.yaml`
-4. `datacheck.yml`
+```
+project/
+├── .datacheck.yaml
+└── data.csv
+```
+
+Then run without `--config`:
+```bash
+datacheck validate data.csv
+```
+
+DataCheck automatically finds and uses `.datacheck.yaml`.
 
 ---
 
 ## Environment Variables
 
-Currently, DataCheck does not use environment variables for configuration.
+Currently DataCheck doesn't use environment variables. All configuration is via command-line arguments and YAML files.
 
 ---
 
-## Examples
+## Shell Completion
 
-See the [Quick Start](../getting-started/quick-start.md) guide for comprehensive examples.
+Coming in future release.
+
+---
+
+## Common Usage Patterns
+
+### Local Development
+```bash
+# Quick validation during development
+datacheck validate test-data.csv --config dev-rules.yaml
+```
+
+### CI/CD Pipeline
+```bash
+# Strict validation in production
+datacheck validate prod-data.csv --config prod-rules.yaml
+
+# JSON output for processing
+datacheck validate data.csv --config rules.yaml --output json > results.json
+```
+
+### Data Pipeline
+```bash
+# Validate at each stage
+datacheck validate raw/data.csv --config validation/raw.yaml
+datacheck validate cleaned/data.csv --config validation/clean.yaml
+datacheck validate final/data.parquet --config validation/final.yaml
+```
+
+### Multiple Files
+```bash
+# Validate multiple files
+for file in data/*.csv; do
+    datacheck validate "$file" --config rules/$(basename "$file" .csv).yaml
+done
+```
