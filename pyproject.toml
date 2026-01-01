@@ -26,7 +26,7 @@ pandas = "^2.0.0"
 pyyaml = "^6.0"
 rich = ">=13,<15"
 pyarrow = "^22.0.0"
-click = "~8.1.0"
+click = ">=8.1,<8.4"
 duckdb = { version = "^0.8.1", optional = true, markers = "platform_system != 'Windows'" }
 
 [tool.poetry.extras]
