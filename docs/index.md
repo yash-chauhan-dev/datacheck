@@ -13,7 +13,7 @@ hero:
       text: View Use Cases
       link: /use-cases/
   image:
-    src: /hero.svg
+    src: /datacheck/hero.svg
     alt: DataCheck Data Validation
 
 features:
@@ -225,7 +225,7 @@ datacheck validate data.csv --config validation.yaml
       <div style="opacity: 0.8; font-size: 0.85rem;">fail-fast validation</div>
     </div>
   </div>
-  <a href="/use-cases/#airflow-data-pipelines" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: white; color: #667eea; border-radius: 6px; text-decoration: none; font-weight: 500;">Learn More →</a>
+  <a href="/datacheck/use-cases/#airflow-data-pipelines" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: white; color: #667eea; border-radius: 6px; text-decoration: none; font-weight: 500;">Learn More →</a>
 </div>
 
 <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 2rem; border-radius: 12px; color: white; margin: 2rem 0;">
@@ -243,7 +243,7 @@ datacheck validate data.csv --config validation.yaml
       <div style="opacity: 0.8; font-size: 0.85rem;">validate before training</div>
     </div>
   </div>
-  <a href="/use-cases/#ml-training-pipelines" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: white; color: #f5576c; border-radius: 6px; text-decoration: none; font-weight: 500;">Learn More →</a>
+  <a href="/datacheck/use-cases/#ml-training-pipelines" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: white; color: #f5576c; border-radius: 6px; text-decoration: none; font-weight: 500;">Learn More →</a>
 </div>
 
 <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 2rem; border-radius: 12px; color: white; margin: 2rem 0;">
@@ -252,7 +252,7 @@ datacheck validate data.csv --config validation.yaml
   <div style="margin-top: 1rem; background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px;">
     <div style="opacity: 0.9;">Prevent breaking changes before they reach production. Both producer and consumer teams validate against the same contract.</div>
   </div>
-  <a href="/use-cases/#data-contracts-between-teams" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: white; color: #00f2fe; border-radius: 6px; text-decoration: none; font-weight: 500;">Learn More →</a>
+  <a href="/datacheck/use-cases/#data-contracts-between-teams" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: white; color: #00f2fe; border-radius: 6px; text-decoration: none; font-weight: 500;">Learn More →</a>
 </div>
 
 ## What You Can Validate
@@ -322,7 +322,7 @@ datacheck validate data.csv --config validation.yaml
   <div style="font-size: 1.3rem; margin-bottom: 1rem; opacity: 0.95;">Join teams improving their data quality</div>
   <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 2rem;">Start validating in 2 minutes</div>
   <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-    <a href="/guide/getting-started" style="display: inline-block; padding: 1rem 2rem; background: white; color: #667eea; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem;">Get Started →</a>
-    <a href="/use-cases/" style="display: inline-block; padding: 1rem 2rem; background: rgba(255,255,255,0.2); color: white; border: 2px solid white; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem;">See Use Cases →</a>
+    <a href="/datacheck/guide/getting-started" style="display: inline-block; padding: 1rem 2rem; background: white; color: #667eea; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem;">Get Started →</a>
+    <a href="/datacheck/use-cases/" style="display: inline-block; padding: 1rem 2rem; background: rgba(255,255,255,0.2); color: white; border: 2px solid white; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem;">See Use Cases →</a>
   </div>
 </div>
