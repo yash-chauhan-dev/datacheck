@@ -1,9 +1,10 @@
 export default {
   title: 'DataCheck',
   description: 'Lightweight data quality validation for data engineers',
+  base: '/datacheck/',
 
   head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['link', { rel: 'icon', href: '/datacheck/favicon.ico' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
   ],
 
