@@ -1,0 +1,6 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shield/Check icon for DataCheck -->
+  <path d="M16 2L4 7v8c0 7.732 5.227 14.97 12 16.733C22.773 29.97 28 22.732 28 15V7L16 2z" fill="#10b981" opacity="0.1"/>
+  <path d="M16 2L4 7v8c0 7.732 5.227 14.97 12 16.733C22.773 29.97 28 22.732 28 15V7L16 2z" stroke="#10b981" stroke-width="2" stroke-linejoin="round" fill="none"/>
+  <path d="M11 16l3 3 7-7" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
