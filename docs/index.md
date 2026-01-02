@@ -91,28 +91,28 @@ datacheck validate users.csv --config validation.yaml
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0;">
 
-<div style="padding: 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; color: white;">
-  <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">10x</div>
-  <div style="font-size: 1.1rem; opacity: 0.95;">Less code than custom validation</div>
-  <div style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">Replace 100+ lines of Python with 10 lines of YAML</div>
+<div style="padding: 1.5rem; background: #f9fafb; border: 2px solid #e5e7eb; border-radius: 12px;">
+  <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem; color: #1f2937;">10x</div>
+  <div style="font-size: 1.1rem; color: #374151;">Less code than custom validation</div>
+  <div style="margin-top: 1rem; color: #6b7280; font-size: 0.9rem;">Replace 100+ lines of Python with 10 lines of YAML</div>
 </div>
 
-<div style="padding: 1.5rem; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 12px; color: white;">
-  <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">6x</div>
-  <div style="font-size: 1.1rem; opacity: 0.95;">Faster to set up</div>
-  <div style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">From 30 minutes to 5 minutes</div>
+<div style="padding: 1.5rem; background: #f9fafb; border: 2px solid #e5e7eb; border-radius: 12px;">
+  <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem; color: #1f2937;">6x</div>
+  <div style="font-size: 1.1rem; color: #374151;">Faster to set up</div>
+  <div style="margin-top: 1rem; color: #6b7280; font-size: 0.9rem;">From 30 minutes to 5 minutes</div>
 </div>
 
-<div style="padding: 1.5rem; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 12px; color: white;">
-  <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">8 hrs</div>
-  <div style="font-size: 1.1rem; opacity: 0.95;">Saved per month</div>
-  <div style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">Catch issues in 30 seconds vs 2 hours</div>
+<div style="padding: 1.5rem; background: #f9fafb; border: 2px solid #e5e7eb; border-radius: 12px;">
+  <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem; color: #1f2937;">8 hrs</div>
+  <div style="font-size: 1.1rem; color: #374151;">Saved per month</div>
+  <div style="margin-top: 1rem; color: #6b7280; font-size: 0.9rem;">Catch issues in 30 seconds vs 2 hours</div>
 </div>
 
-<div style="padding: 1.5rem; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); border-radius: 12px; color: white;">
-  <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">$100</div>
-  <div style="font-size: 1.1rem; opacity: 0.95;">Saved per month</div>
-  <div style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">Prevent wasted GPU training costs</div>
+<div style="padding: 1.5rem; background: #f9fafb; border: 2px solid #e5e7eb; border-radius: 12px;">
+  <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem; color: #1f2937;">$100</div>
+  <div style="font-size: 1.1rem; color: #374151;">Saved per month</div>
+  <div style="margin-top: 1rem; color: #6b7280; font-size: 0.9rem;">Prevent wasted GPU training costs</div>
 </div>
 
 </div>
@@ -214,81 +214,81 @@ Teams use DataCheck to prevent costly data quality issues in production pipeline
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin: 3rem 0;">
 
-<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2.5rem; border-radius: 16px; color: white; box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);">
+<div style="background: #ffffff; padding: 2.5rem; border-radius: 16px; border: 2px solid #e5e7eb; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
   <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
     <div style="font-size: 3rem;">🏭</div>
-    <h3 style="margin: 0; color: white; font-size: 1.5rem;">Airflow Pipelines</h3>
+    <h3 style="margin: 0; color: #1f2937; font-size: 1.5rem;">Airflow Pipelines</h3>
   </div>
 
-  <p style="font-size: 1.05rem; opacity: 0.95; margin-bottom: 1.5rem; line-height: 1.6;">Stop wasting hours on bad data. Validate before expensive transformations and catch issues instantly.</p>
+  <p style="font-size: 1.05rem; color: #4b5563; margin-bottom: 1.5rem; line-height: 1.6;">Stop wasting hours on bad data. Validate before expensive transformations and catch issues instantly.</p>
 
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0;">
-    <div style="background: rgba(255,255,255,0.15); padding: 1.25rem; border-radius: 10px; backdrop-filter: blur(10px);">
-      <div style="opacity: 0.85; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">Before</div>
-      <div style="font-size: 2rem; font-weight: bold; margin: 0.5rem 0;">2 hours</div>
-      <div style="opacity: 0.85; font-size: 0.9rem;">to find bad data</div>
+    <div style="background: #f9fafb; padding: 1.25rem; border-radius: 10px; border: 1px solid #e5e7eb;">
+      <div style="color: #6b7280; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">Before</div>
+      <div style="font-size: 2rem; font-weight: bold; margin: 0.5rem 0; color: #1f2937;">2 hours</div>
+      <div style="color: #6b7280; font-size: 0.9rem;">to find bad data</div>
     </div>
-    <div style="background: rgba(255,255,255,0.15); padding: 1.25rem; border-radius: 10px; backdrop-filter: blur(10px);">
-      <div style="opacity: 0.85; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">After</div>
-      <div style="font-size: 2rem; font-weight: bold; margin: 0.5rem 0;">30 sec</div>
-      <div style="opacity: 0.85; font-size: 0.9rem;">fail-fast validation</div>
+    <div style="background: #f9fafb; padding: 1.25rem; border-radius: 10px; border: 1px solid #e5e7eb;">
+      <div style="color: #6b7280; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">After</div>
+      <div style="font-size: 2rem; font-weight: bold; margin: 0.5rem 0; color: #1f2937;">30 sec</div>
+      <div style="color: #6b7280; font-size: 0.9rem;">fail-fast validation</div>
     </div>
   </div>
 
-  <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2);">
-    <div style="opacity: 0.9; font-size: 0.95rem;">💡 Save <strong>8 hours/month</strong> in debugging time</div>
+  <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb;">
+    <div style="color: #4b5563; font-size: 0.95rem;">💡 Save <strong>8 hours/month</strong> in debugging time</div>
   </div>
 
-  <a href="/use-cases/#airflow-data-pipelines" style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: white; color: #667eea; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.2s;">See How →</a>
+  <a href="/use-cases/#airflow-data-pipelines" style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: #1f2937; color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">See How →</a>
 </div>
 
-<div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 2.5rem; border-radius: 16px; color: white; box-shadow: 0 10px 40px rgba(240, 147, 251, 0.3);">
+<div style="background: #ffffff; padding: 2.5rem; border-radius: 16px; border: 2px solid #e5e7eb; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
   <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
     <div style="font-size: 3rem;">🤖</div>
-    <h3 style="margin: 0; color: white; font-size: 1.5rem;">ML Training</h3>
+    <h3 style="margin: 0; color: #1f2937; font-size: 1.5rem;">ML Training</h3>
   </div>
 
-  <p style="font-size: 1.05rem; opacity: 0.95; margin-bottom: 1.5rem; line-height: 1.6;">Don't waste expensive GPU time on bad training data. Validate before you train.</p>
+  <p style="font-size: 1.05rem; color: #4b5563; margin-bottom: 1.5rem; line-height: 1.6;">Don't waste expensive GPU time on bad training data. Validate before you train.</p>
 
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0;">
-    <div style="background: rgba(255,255,255,0.15); padding: 1.25rem; border-radius: 10px; backdrop-filter: blur(10px);">
-      <div style="opacity: 0.85; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">Wasted</div>
-      <div style="font-size: 2rem; font-weight: bold; margin: 0.5rem 0;">$150</div>
-      <div style="opacity: 0.85; font-size: 0.9rem;">per month on bad runs</div>
+    <div style="background: #f9fafb; padding: 1.25rem; border-radius: 10px; border: 1px solid #e5e7eb;">
+      <div style="color: #6b7280; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">Wasted</div>
+      <div style="font-size: 2rem; font-weight: bold; margin: 0.5rem 0; color: #1f2937;">$150</div>
+      <div style="color: #6b7280; font-size: 0.9rem;">per month on bad runs</div>
     </div>
-    <div style="background: rgba(255,255,255,0.15); padding: 1.25rem; border-radius: 10px; backdrop-filter: blur(10px);">
-      <div style="opacity: 0.85; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">With DataCheck</div>
-      <div style="font-size: 2rem; font-weight: bold; margin: 0.5rem 0;">$0</div>
-      <div style="opacity: 0.85; font-size: 0.9rem;">validate first</div>
+    <div style="background: #f9fafb; padding: 1.25rem; border-radius: 10px; border: 1px solid #e5e7eb;">
+      <div style="color: #6b7280; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">With DataCheck</div>
+      <div style="font-size: 2rem; font-weight: bold; margin: 0.5rem 0; color: #1f2937;">$0</div>
+      <div style="color: #6b7280; font-size: 0.9rem;">validate first</div>
     </div>
   </div>
 
-  <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2);">
-    <div style="opacity: 0.9; font-size: 0.95rem;">💡 Prevent <strong>2 hours</strong> of wasted GPU time per incident</div>
+  <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb;">
+    <div style="color: #4b5563; font-size: 0.95rem;">💡 Prevent <strong>2 hours</strong> of wasted GPU time per incident</div>
   </div>
 
-  <a href="/use-cases/#ml-training-pipelines" style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: white; color: #f5576c; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.2s;">See How →</a>
+  <a href="/use-cases/#ml-training-pipelines" style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: #1f2937; color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">See How →</a>
 </div>
 
-<div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 2.5rem; border-radius: 16px; color: white; box-shadow: 0 10px 40px rgba(79, 172, 254, 0.3);">
+<div style="background: #ffffff; padding: 2.5rem; border-radius: 16px; border: 2px solid #e5e7eb; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);">
   <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
     <div style="font-size: 3rem;">🤝</div>
-    <h3 style="margin: 0; color: white; font-size: 1.5rem;">Data Contracts</h3>
+    <h3 style="margin: 0; color: #1f2937; font-size: 1.5rem;">Data Contracts</h3>
   </div>
 
-  <p style="font-size: 1.05rem; opacity: 0.95; margin-bottom: 1.5rem; line-height: 1.6;">Turn validation configs into living contracts between teams. Prevent breaking changes before production.</p>
+  <p style="font-size: 1.05rem; color: #4b5563; margin-bottom: 1.5rem; line-height: 1.6;">Turn validation configs into living contracts between teams. Prevent breaking changes before production.</p>
 
-  <div style="background: rgba(255,255,255,0.15); padding: 1.25rem; border-radius: 10px; backdrop-filter: blur(10px); margin: 1.5rem 0;">
-    <div style="opacity: 0.9; font-size: 0.95rem; line-height: 1.6;">
+  <div style="background: #f9fafb; padding: 1.25rem; border-radius: 10px; border: 1px solid #e5e7eb; margin: 1.5rem 0;">
+    <div style="color: #4b5563; font-size: 0.95rem; line-height: 1.6;">
       Both producer and consumer teams validate against the same contract. Breaking changes caught in CI/CD, not production.
     </div>
   </div>
 
-  <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2);">
-    <div style="opacity: 0.9; font-size: 0.95rem;">💡 Prevent production incidents • Clear ownership • Living docs</div>
+  <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb;">
+    <div style="color: #4b5563; font-size: 0.95rem;">💡 Prevent production incidents • Clear ownership • Living docs</div>
   </div>
 
-  <a href="/use-cases/#data-contracts-between-teams" style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: white; color: #00f2fe; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.2s;">See How →</a>
+  <a href="/use-cases/#data-contracts-between-teams" style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: #1f2937; color: white; border-radius: 8px; text-decoration: none; font-weight: 600;">See How →</a>
 </div>
 
 </div>
