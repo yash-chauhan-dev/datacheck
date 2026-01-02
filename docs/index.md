@@ -203,44 +203,26 @@ Turn validation configs into living contracts. Both producer and consumer teams 
 
 ## Supported Data Formats
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+### 📄 CSV Files
+Automatic encoding detection, any delimiter
+```bash
+datacheck validate users.csv
+```
 
-<div style="display: flex; gap: 1rem; align-items: start; padding: 1.5rem; border: 1px solid #e5e7eb; border-radius: 8px;">
-  <img src="/csv-icon.svg" alt="CSV" width="48" height="48" style="flex-shrink: 0;" />
-  <div>
-    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem;">CSV Files</h3>
-    <p style="margin: 0 0 0.75rem 0; color: #6b7280; font-size: 0.9rem;">Automatic encoding detection, any delimiter</p>
-    <code style="background: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem;">datacheck validate users.csv</code>
-  </div>
-</div>
+### 📦 Parquet Files
+High performance columnar format for big data
+```bash
+datacheck validate data.parquet
+```
 
-<div style="display: flex; gap: 1rem; align-items: start; padding: 1.5rem; border: 1px solid #e5e7eb; border-radius: 8px;">
-  <img src="/parquet-icon.svg" alt="Parquet" width="48" height="48" style="flex-shrink: 0;" />
-  <div>
-    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem;">Parquet Files</h3>
-    <p style="margin: 0 0 0.75rem 0; color: #6b7280; font-size: 0.9rem;">High performance columnar format for big data</p>
-    <code style="background: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem;">datacheck validate data.parquet</code>
-  </div>
-</div>
+### 💾 SQLite Database
+Validate tables directly, no export needed
+```bash
+datacheck validate app.db::users
+```
 
-<div style="display: flex; gap: 1rem; align-items: start; padding: 1.5rem; border: 1px solid #e5e7eb; border-radius: 8px;">
-  <img src="/sqlite-icon.svg" alt="SQLite" width="48" height="48" style="flex-shrink: 0;" />
-  <div>
-    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem;">SQLite Database</h3>
-    <p style="margin: 0 0 0.75rem 0; color: #6b7280; font-size: 0.9rem;">Validate tables directly, no export needed</p>
-    <code style="background: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem;">datacheck validate app.db::users</code>
-  </div>
-</div>
-
-<div style="display: flex; gap: 1rem; align-items: start; padding: 1.5rem; border: 1px solid #e5e7eb; border-radius: 8px;">
-  <img src="/duckdb-icon.svg" alt="DuckDB" width="48" height="48" style="flex-shrink: 0;" />
-  <div>
-    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem;">DuckDB Database</h3>
-    <p style="margin: 0 0 0.75rem 0; color: #6b7280; font-size: 0.9rem;">Analytics on large datasets (Linux/macOS only)</p>
-    <code style="background: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem;">datacheck validate data.duckdb::events</code>
-  </div>
-</div>
-
-</div>
-
-</div>
+### 🦆 DuckDB Database
+Analytics on large datasets (Linux/macOS only)
+```bash
+datacheck validate data.duckdb::events
+```
