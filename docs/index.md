@@ -78,12 +78,35 @@ datacheck validate users.csv --config validation.yaml
 
 :::
 
-## Why DataCheck?
+## Why Teams Choose DataCheck
 
-- **10x less code** - Replace 100+ lines of Python with 10 lines of YAML
-- **6x faster setup** - From 30 minutes to 5 minutes
-- **Save 8 hours/month** - Catch issues in 30 seconds instead of 2 hours
-- **Save $100+/month** - Prevent wasted GPU training costs
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0;">
+
+<div style="padding: 1.5rem; background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%); border-radius: 12px; color: white;">
+  <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">10x</div>
+  <div style="font-size: 1.1rem; opacity: 0.95;">Less code than custom validation</div>
+  <div style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">Replace 100+ lines of Python with 10 lines of YAML</div>
+</div>
+
+<div style="padding: 1.5rem; background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%); border-radius: 12px; color: white;">
+  <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">6x</div>
+  <div style="font-size: 1.1rem; opacity: 0.95;">Faster to set up</div>
+  <div style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">From 30 minutes to 5 minutes</div>
+</div>
+
+<div style="padding: 1.5rem; background: linear-gradient(135deg, #718096 0%, #4a5568 100%); border-radius: 12px; color: white;">
+  <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">8 hrs</div>
+  <div style="font-size: 1.1rem; opacity: 0.95;">Saved per month</div>
+  <div style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">Catch issues in 30 seconds vs 2 hours</div>
+</div>
+
+<div style="padding: 1.5rem; background: linear-gradient(135deg, #a0aec0 0%, #718096 100%); border-radius: 12px; color: white;">
+  <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">$100</div>
+  <div style="font-size: 1.1rem; opacity: 0.95;">Saved per month</div>
+  <div style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">Prevent wasted GPU training costs</div>
+</div>
+
+</div>
 
 ## The Problem DataCheck Solves
 
@@ -164,27 +187,53 @@ datacheck validate data.csv --config validation.yaml
 - Decoupled from codebase
 - 85% less code
 
-## Use Cases
+## Real-World Impact
 
 ### Airflow Pipelines
 
-Stop wasting hours on bad data. Validate before expensive transformations and catch issues in 30 seconds instead of 2 hours.
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin: 3rem 0;">
 
-[Learn more →](/use-cases/#airflow-data-pipelines)
+<div style="background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%); padding: 2.5rem; border-radius: 16px; color: white; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);">
+  <h3 style="margin-top: 0; color: white; font-size: 1.5rem;">Airflow Pipelines</h3>
 
 ### ML Training Pipelines
 
-Don't waste expensive GPU time on bad training data. Validate before you train and save $100+ per month.
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0;">
+    <div style="background: rgba(255,255,255,0.15); padding: 1.25rem; border-radius: 10px; backdrop-filter: blur(10px);">
+      <div style="opacity: 0.85; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">Before</div>
+      <div style="font-size: 2rem; font-weight: bold; margin: 0.5rem 0;">2 hours</div>
+      <div style="opacity: 0.85; font-size: 0.9rem;">to find bad data</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.15); padding: 1.25rem; border-radius: 10px; backdrop-filter: blur(10px);">
+      <div style="opacity: 0.85; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">After</div>
+      <div style="font-size: 2rem; font-weight: bold; margin: 0.5rem 0;">30 sec</div>
+      <div style="opacity: 0.85; font-size: 0.9rem;">fail-fast validation</div>
+    </div>
+  </div>
 
-[Learn more →](/use-cases/#ml-training-pipelines)
+  <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2);">
+    <div style="opacity: 0.9; font-size: 0.95rem;">Save <strong>8 hours/month</strong> in debugging time</div>
+  </div>
 
 ### Data Contracts Between Teams
 
-Turn validation configs into living contracts. Both producer and consumer teams validate against the same contract - breaking changes caught in CI/CD, not production.
+<div style="background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%); padding: 2.5rem; border-radius: 16px; color: white; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);">
+  <h3 style="margin-top: 0; color: white; font-size: 1.5rem;">ML Training</h3>
 
-[Learn more →](/use-cases/#data-contracts-between-teams)
+  <p style="font-size: 1.05rem; opacity: 0.95; margin-bottom: 1.5rem; line-height: 1.6;">Don't waste expensive GPU time on bad training data. Validate before you train.</p>
 
-## Supported Data Formats
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0;">
+    <div style="background: rgba(255,255,255,0.15); padding: 1.25rem; border-radius: 10px; backdrop-filter: blur(10px);">
+      <div style="opacity: 0.85; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">Wasted</div>
+      <div style="font-size: 2rem; font-weight: bold; margin: 0.5rem 0;">$150</div>
+      <div style="opacity: 0.85; font-size: 0.9rem;">per month on bad runs</div>
+    </div>
+    <div style="background: rgba(255,255,255,0.15); padding: 1.25rem; border-radius: 10px; backdrop-filter: blur(10px);">
+      <div style="opacity: 0.85; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">With DataCheck</div>
+      <div style="font-size: 2rem; font-weight: bold; margin: 0.5rem 0;">$0</div>
+      <div style="opacity: 0.85; font-size: 0.9rem;">validate first</div>
+    </div>
+  </div>
 
 ### CSV Files
 Automatic encoding detection, any delimiter
