@@ -96,7 +96,11 @@ datacheck validate users.csv --config validation.yaml
 
 ## The Problem DataCheck Solves
 
-### ❌ Without DataCheck
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+
+<div>
+
+<h3>❌ Without DataCheck</h3>
 
 ```python
 # validate.py - 100+ lines
@@ -139,7 +143,11 @@ if errors:
 - Tightly coupled to code
 - 100+ lines for simple checks
 
-### ✅ With DataCheck
+</div>
+
+<div>
+
+<h3>✅ With DataCheck</h3>
 
 ```yaml
 # validation.yaml - 15 lines
@@ -231,6 +239,8 @@ Turn validation configs into living contracts. Both producer and consumer teams 
     <p style="margin: 0 0 0.75rem 0; color: #6b7280; font-size: 0.9rem;">Analytics on large datasets (Linux/macOS only)</p>
     <code style="background: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem;">datacheck validate data.duckdb::events</code>
   </div>
+</div>
+
 </div>
 
 </div>
