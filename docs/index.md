@@ -189,14 +189,14 @@ datacheck validate data.csv --config validation.yaml
 
 ## Real-World Impact
 
-Teams use DataCheck to prevent costly data quality issues in production pipelines.
+### Airflow Pipelines
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin: 3rem 0;">
 
 <div style="background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%); padding: 2.5rem; border-radius: 16px; color: white; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);">
   <h3 style="margin-top: 0; color: white; font-size: 1.5rem;">Airflow Pipelines</h3>
 
-  <p style="font-size: 1.05rem; opacity: 0.95; margin-bottom: 1.5rem; line-height: 1.6;">Stop wasting hours on bad data. Validate before expensive transformations and catch issues instantly.</p>
+### ML Training Pipelines
 
   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0;">
     <div style="background: rgba(255,255,255,0.15); padding: 1.25rem; border-radius: 10px; backdrop-filter: blur(10px);">
@@ -215,8 +215,7 @@ Teams use DataCheck to prevent costly data quality issues in production pipeline
     <div style="opacity: 0.9; font-size: 0.95rem;">Save <strong>8 hours/month</strong> in debugging time</div>
   </div>
 
-  <a href="/use-cases/#airflow-data-pipelines" style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: white; color: #2d3748; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.2s;">See How →</a>
-</div>
+### Data Contracts Between Teams
 
 <div style="background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%); padding: 2.5rem; border-radius: 16px; color: white; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);">
   <h3 style="margin-top: 0; color: white; font-size: 1.5rem;">ML Training</h3>
@@ -236,71 +235,26 @@ Teams use DataCheck to prevent costly data quality issues in production pipeline
     </div>
   </div>
 
-  <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2);">
-    <div style="opacity: 0.9; font-size: 0.95rem;">Prevent <strong>2 hours</strong> of wasted GPU time per incident</div>
-  </div>
+### CSV Files
+Automatic encoding detection, any delimiter
+```bash
+datacheck validate users.csv
+```
 
-  <a href="/use-cases/#ml-training-pipelines" style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: white; color: #4a5568; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.2s;">See How →</a>
-</div>
+### Parquet Files
+High performance columnar format for big data
+```bash
+datacheck validate data.parquet
+```
 
-<div style="background: linear-gradient(135deg, #718096 0%, #4a5568 100%); padding: 2.5rem; border-radius: 16px; color: white; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);">
-  <h3 style="margin-top: 0; color: white; font-size: 1.5rem;">Data Contracts</h3>
+### SQLite Database
+Validate tables directly, no export needed
+```bash
+datacheck validate app.db::users
+```
 
-  <p style="font-size: 1.05rem; opacity: 0.95; margin-bottom: 1.5rem; line-height: 1.6;">Turn validation configs into living contracts between teams. Prevent breaking changes before production.</p>
-
-  <div style="background: rgba(255,255,255,0.15); padding: 1.25rem; border-radius: 10px; backdrop-filter: blur(10px); margin: 1.5rem 0;">
-    <div style="opacity: 0.9; font-size: 0.95rem; line-height: 1.6;">
-      Both producer and consumer teams validate against the same contract. Breaking changes caught in CI/CD, not production.
-    </div>
-  </div>
-
-  <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2);">
-    <div style="opacity: 0.9; font-size: 0.95rem;">Prevent production incidents • Clear ownership • Living docs</div>
-  </div>
-
-  <a href="/use-cases/#data-contracts-between-teams" style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: white; color: #718096; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.2s;">See How →</a>
-</div>
-
-</div>
-
-## Supported Data Formats
-
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
-
-<div style="display: flex; gap: 1rem; align-items: start; padding: 1.5rem; border: 1px solid #e5e7eb; border-radius: 8px;">
-  <img src="/csv-icon.svg" alt="CSV" width="48" height="48" style="flex-shrink: 0;" />
-  <div>
-    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem;">CSV Files</h3>
-    <p style="margin: 0 0 0.75rem 0; color: #6b7280; font-size: 0.9rem;">Automatic encoding detection, any delimiter</p>
-    <code style="background: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem;">datacheck validate users.csv</code>
-  </div>
-</div>
-
-<div style="display: flex; gap: 1rem; align-items: start; padding: 1.5rem; border: 1px solid #e5e7eb; border-radius: 8px;">
-  <img src="/parquet-icon.svg" alt="Parquet" width="48" height="48" style="flex-shrink: 0;" />
-  <div>
-    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem;">Parquet Files</h3>
-    <p style="margin: 0 0 0.75rem 0; color: #6b7280; font-size: 0.9rem;">High performance columnar format for big data</p>
-    <code style="background: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem;">datacheck validate data.parquet</code>
-  </div>
-</div>
-
-<div style="display: flex; gap: 1rem; align-items: start; padding: 1.5rem; border: 1px solid #e5e7eb; border-radius: 8px;">
-  <img src="/sqlite-icon.svg" alt="SQLite" width="48" height="48" style="flex-shrink: 0;" />
-  <div>
-    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem;">SQLite Database</h3>
-    <p style="margin: 0 0 0.75rem 0; color: #6b7280; font-size: 0.9rem;">Validate tables directly, no export needed</p>
-    <code style="background: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem;">datacheck validate app.db::users</code>
-  </div>
-</div>
-
-<div style="display: flex; gap: 1rem; align-items: start; padding: 1.5rem; border: 1px solid #e5e7eb; border-radius: 8px;">
-  <img src="/duckdb-icon.svg" alt="DuckDB" width="48" height="48" style="flex-shrink: 0;" />
-  <div>
-    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem;">DuckDB Database</h3>
-    <p style="margin: 0 0 0.75rem 0; color: #6b7280; font-size: 0.9rem;">Analytics on large datasets (Linux/macOS only)</p>
-    <code style="background: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem;">datacheck validate data.duckdb::events</code>
-  </div>
-</div>
-
-</div>
+### DuckDB Database
+Analytics on large datasets (Linux/macOS only)
+```bash
+datacheck validate data.duckdb::events
+```
