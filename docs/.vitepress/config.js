@@ -47,6 +47,18 @@ export default {
           ]
         }
       ],
+      '/use-cases/': [
+        {
+          text: 'Use Cases',
+          items: [
+            { text: 'Airflow Pipelines', link: '/use-cases/#airflow-data-pipelines' },
+            { text: 'ML Training', link: '/use-cases/#ml-training-pipelines' },
+            { text: 'Data Contracts', link: '/use-cases/#data-contracts-between-teams' },
+            { text: 'CI/CD Quality Gates', link: '/use-cases/#cicd-quality-gates' },
+            { text: 'Daily Monitoring', link: '/use-cases/#daily-data-quality-monitoring' },
+          ]
+        }
+      ],
       '/reference/': [
         {
           text: 'Reference',
