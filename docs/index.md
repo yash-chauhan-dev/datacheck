@@ -12,33 +12,24 @@ hero:
     - theme: alt
       text: View Use Cases
       link: /use-cases/
-  image:
-    src: /hero.svg
-    alt: DataCheck Data Validation
 
 features:
-  - icon: ⚡
-    title: Fast & Lightweight
+  - title: Fast & Lightweight
     details: Validate millions of rows in seconds. No heavy frameworks, just pure speed.
 
-  - icon: 📝
-    title: Simple YAML Configuration
+  - title: Simple YAML Configuration
     details: Write validation rules in clean, readable YAML. No code required.
 
-  - icon: 🎯
-    title: Built for CI/CD
+  - title: Built for CI/CD
     details: Proper exit codes, JSON output, and seamless integration with any CI/CD platform.
 
-  - icon: 📊
-    title: Multiple Formats
+  - title: Multiple Formats
     details: CSV, Parquet, SQLite, and DuckDB support out of the box.
 
-  - icon: 🔍
-    title: Detailed Reports
+  - title: Detailed Reports
     details: Beautiful terminal output with precise failure information and row indices.
 
-  - icon: 🚀
-    title: Zero Setup
+  - title: Zero Setup
     details: Install with pip and start validating. No configuration files, no complex setup.
 ---
 
@@ -96,7 +87,7 @@ datacheck validate users.csv --config validation.yaml
 
 ## The Problem DataCheck Solves
 
-### ❌ Without DataCheck
+### Without DataCheck
 
 ```python
 # validate.py - 100+ lines
@@ -139,7 +130,7 @@ if errors:
 - Tightly coupled to code
 - 100+ lines for simple checks
 
-### ✅ With DataCheck
+### With DataCheck
 
 ```yaml
 # validation.yaml - 15 lines
@@ -168,26 +159,26 @@ datacheck validate data.csv --config validation.yaml
 ```
 
 **Benefits:**
-- ✅ No coding required
-- ✅ Easy to understand and modify
-- ✅ Decoupled from codebase
-- ✅ 85% less code
+- No coding required
+- Easy to understand and modify
+- Decoupled from codebase
+- 85% less code
 
 ## Use Cases
 
-### 🏭 Airflow Pipelines
+### Airflow Pipelines
 
 Stop wasting hours on bad data. Validate before expensive transformations and catch issues in 30 seconds instead of 2 hours.
 
 [Learn more →](/use-cases/#airflow-data-pipelines)
 
-### 🤖 ML Training Pipelines
+### ML Training Pipelines
 
 Don't waste expensive GPU time on bad training data. Validate before you train and save $100+ per month.
 
 [Learn more →](/use-cases/#ml-training-pipelines)
 
-### 🤝 Data Contracts Between Teams
+### Data Contracts Between Teams
 
 Turn validation configs into living contracts. Both producer and consumer teams validate against the same contract - breaking changes caught in CI/CD, not production.
 
@@ -195,25 +186,25 @@ Turn validation configs into living contracts. Both producer and consumer teams 
 
 ## Supported Data Formats
 
-### 📄 CSV Files
+### CSV Files
 Automatic encoding detection, any delimiter
 ```bash
 datacheck validate users.csv
 ```
 
-### 📦 Parquet Files
+### Parquet Files
 High performance columnar format for big data
 ```bash
 datacheck validate data.parquet
 ```
 
-### 💾 SQLite Database
+### SQLite Database
 Validate tables directly, no export needed
 ```bash
 datacheck validate app.db::users
 ```
 
-### 🦆 DuckDB Database
+### DuckDB Database
 Analytics on large datasets (Linux/macOS only)
 ```bash
 datacheck validate data.duckdb::events
