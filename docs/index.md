@@ -87,7 +87,7 @@ datacheck validate users.csv --config validation.yaml
 
 ## The Problem DataCheck Solves
 
-### Without DataCheck
+### ❌ Without DataCheck
 
 ```python
 # validate.py - 100+ lines
@@ -130,7 +130,7 @@ if errors:
 - Tightly coupled to code
 - 100+ lines for simple checks
 
-### With DataCheck
+### ✅ With DataCheck
 
 ```yaml
 # validation.yaml - 15 lines
