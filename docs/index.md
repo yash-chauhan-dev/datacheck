@@ -100,7 +100,7 @@ datacheck validate users.csv --config validation.yaml
 
 <div>
 
-### ❌ Without DataCheck
+<h3>❌ Without DataCheck</h3>
 
 ```python
 # validate.py - 100+ lines
@@ -147,7 +147,7 @@ if errors:
 
 <div>
 
-### ✅ With DataCheck
+<h3>✅ With DataCheck</h3>
 
 ```yaml
 # validation.yaml - 15 lines
