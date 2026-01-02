@@ -96,11 +96,7 @@ datacheck validate users.csv --config validation.yaml
 
 ## The Problem DataCheck Solves
 
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
-
-<div>
-
-<h3>❌ Without DataCheck</h3>
+### ❌ Without DataCheck
 
 ```python
 # validate.py - 100+ lines
@@ -143,11 +139,7 @@ if errors:
 - Tightly coupled to code
 - 100+ lines for simple checks
 
-</div>
-
-<div>
-
-<h3>✅ With DataCheck</h3>
+### ✅ With DataCheck
 
 ```yaml
 # validation.yaml - 15 lines
@@ -180,10 +172,6 @@ datacheck validate data.csv --config validation.yaml
 - ✅ Easy to understand and modify
 - ✅ Decoupled from codebase
 - ✅ 85% less code
-
-</div>
-
-</div>
 
 ## Use Cases
 
