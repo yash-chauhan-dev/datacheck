@@ -246,3 +246,5 @@ Turn validation configs into living contracts. Both producer and consumer teams 
 </div>
 
 </div>
+
+</div>
