@@ -181,29 +181,25 @@ datacheck validate data.csv --config validation.yaml
 - ✅ Decoupled from codebase
 - ✅ 85% less code
 
-</div>
-
-</div>
-
 ## Use Cases
 
 ### 🏭 Airflow Pipelines
 
 Stop wasting hours on bad data. Validate before expensive transformations and catch issues in 30 seconds instead of 2 hours.
 
-[Learn more →](/datacheck/use-cases/#airflow-data-pipelines)
+[Learn more →](/use-cases/#airflow-data-pipelines)
 
 ### 🤖 ML Training Pipelines
 
 Don't waste expensive GPU time on bad training data. Validate before you train and save $100+ per month.
 
-[Learn more →](/datacheck/use-cases/#ml-training-pipelines)
+[Learn more →](/use-cases/#ml-training-pipelines)
 
 ### 🤝 Data Contracts Between Teams
 
 Turn validation configs into living contracts. Both producer and consumer teams validate against the same contract - breaking changes caught in CI/CD, not production.
 
-[Learn more →](/datacheck/use-cases/#data-contracts-between-teams)
+[Learn more →](/use-cases/#data-contracts-between-teams)
 
 ## Supported Data Formats
 
