@@ -179,19 +179,19 @@ datacheck validate data.csv --config validation.yaml
 
 Stop wasting hours on bad data. Validate before expensive transformations and catch issues in 30 seconds instead of 2 hours.
 
-[Learn more →](/datacheck/use-cases/#airflow-data-pipelines)
+[Learn more →](/use-cases/#airflow-data-pipelines)
 
 ### 🤖 ML Training Pipelines
 
 Don't waste expensive GPU time on bad training data. Validate before you train and save $100+ per month.
 
-[Learn more →](/datacheck/use-cases/#ml-training-pipelines)
+[Learn more →](/use-cases/#ml-training-pipelines)
 
 ### 🤝 Data Contracts Between Teams
 
 Turn validation configs into living contracts. Both producer and consumer teams validate against the same contract - breaking changes caught in CI/CD, not production.
 
-[Learn more →](/datacheck/use-cases/#data-contracts-between-teams)
+[Learn more →](/use-cases/#data-contracts-between-teams)
 
 ## Supported Data Formats
 
@@ -231,8 +231,6 @@ Turn validation configs into living contracts. Both producer and consumer teams 
     <p style="margin: 0 0 0.75rem 0; color: #6b7280; font-size: 0.9rem;">Analytics on large datasets (Linux/macOS only)</p>
     <code style="background: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem;">datacheck validate data.duckdb::events</code>
   </div>
-</div>
-
 </div>
 
 </div>
