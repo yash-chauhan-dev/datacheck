@@ -50,6 +50,7 @@ html:not(.dark) .impact-card h3 {
   color: var(--vp-c-text-1) !important;
 }
 
+
 .dark .impact-card {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.06)) !important;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -83,6 +84,7 @@ html:not(.dark) .format-card {
 html:not(.dark) .format-card h3 {
   color: var(--vp-c-text-1) !important;
 }
+
 
 .dark .format-card {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.06)) !important;
@@ -123,6 +125,7 @@ html:not(.dark) .impact-card a[style*="background: white"] {
 html:not(.dark) .impact-card a[style*="background: white"]:hover {
   background: var(--vp-c-brand-2) !important;
 }
+
 
 /* Nested elements in dark mode */
 .dark .impact-card [style*="background: rgba(255,255,255"],
