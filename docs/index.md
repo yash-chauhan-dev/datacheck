@@ -82,25 +82,25 @@ datacheck validate users.csv --config validation.yaml
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0;">
 
-<div style="padding: 1.5rem; background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%); border-radius: 12px; color: white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
+<div class="stats-card" style="background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%); color: white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
   <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">10x</div>
   <div style="font-size: 1.1rem; opacity: 0.95;">Less code than custom validation</div>
   <div style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">Replace 100+ lines of Python with 10 lines of YAML</div>
 </div>
 
-<div style="padding: 1.5rem; background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%); border-radius: 12px; color: white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
+<div class="stats-card" style="background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%); color: white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
   <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">6x</div>
   <div style="font-size: 1.1rem; opacity: 0.95;">Faster to set up</div>
   <div style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">From 30 minutes to 5 minutes</div>
 </div>
 
-<div style="padding: 1.5rem; background: linear-gradient(135deg, #718096 0%, #4a5568 100%); border-radius: 12px; color: white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
+<div class="stats-card" style="background: linear-gradient(135deg, #718096 0%, #4a5568 100%); color: white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
   <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">8 hrs</div>
   <div style="font-size: 1.1rem; opacity: 0.95;">Saved per month</div>
   <div style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">Catch issues in 30 seconds vs 2 hours</div>
 </div>
 
-<div style="padding: 1.5rem; background: linear-gradient(135deg, #a0aec0 0%, #718096 100%); border-radius: 12px; color: white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
+<div class="stats-card" style="background: linear-gradient(135deg, #a0aec0 0%, #718096 100%); color: white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
   <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">$100</div>
   <div style="font-size: 1.1rem; opacity: 0.95;">Saved per month</div>
   <div style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">Prevent wasted GPU training costs</div>
@@ -193,7 +193,7 @@ Teams use DataCheck to prevent costly data quality issues in production pipeline
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin: 3rem 0;">
 
-<div style="background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%); padding: 2.5rem; border-radius: 16px; color: white; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);">
+<div class="impact-card" style="background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%); padding: 2.5rem; border-radius: 16px; color: white; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);">
   <h3 style="margin-top: 0; color: white; font-size: 1.5rem;">Airflow Pipelines</h3>
 
   <p style="font-size: 1.05rem; opacity: 0.95; margin-bottom: 1.5rem; line-height: 1.6;">Stop wasting hours on bad data. Validate before expensive transformations and catch issues instantly.</p>
@@ -218,7 +218,7 @@ Teams use DataCheck to prevent costly data quality issues in production pipeline
   <a href="/use-cases/#airflow-data-pipelines" style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: white; color: #2d3748; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">See How →</a>
 </div>
 
-<div style="background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%); padding: 2.5rem; border-radius: 16px; color: white; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);">
+<div class="impact-card" style="background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%); padding: 2.5rem; border-radius: 16px; color: white; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);">
   <h3 style="margin-top: 0; color: white; font-size: 1.5rem;">ML Training</h3>
 
   <p style="font-size: 1.05rem; opacity: 0.95; margin-bottom: 1.5rem; line-height: 1.6;">Don't waste expensive GPU time on bad training data. Validate before you train.</p>
@@ -243,7 +243,7 @@ Teams use DataCheck to prevent costly data quality issues in production pipeline
   <a href="/use-cases/#ml-training-pipelines" style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 1.5rem; background: white; color: #4a5568; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);">See How →</a>
 </div>
 
-<div style="background: linear-gradient(135deg, #718096 0%, #4a5568 100%); padding: 2.5rem; border-radius: 16px; color: white; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);">
+<div class="impact-card" style="background: linear-gradient(135deg, #718096 0%, #4a5568 100%); padding: 2.5rem; border-radius: 16px; color: white; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);">
   <h3 style="margin-top: 0; color: white; font-size: 1.5rem;">Data Contracts</h3>
 
   <p style="font-size: 1.05rem; opacity: 0.95; margin-bottom: 1.5rem; line-height: 1.6;">Turn validation configs into living contracts between teams. Prevent breaking changes before production.</p>
@@ -267,7 +267,7 @@ Teams use DataCheck to prevent costly data quality issues in production pipeline
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
 
-<div style="background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%); padding: 1.75rem; border-radius: 12px; color: white; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: transform 0.2s;">
+<div class="format-card" style="background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%); padding: 1.75rem; border-radius: 12px; color: white; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: transform 0.2s;">
   <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
     <div style="background: rgba(255,255,255,0.1); padding: 0.75rem; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
       <img src="/csv-icon.svg" alt="CSV" width="32" height="32" />
@@ -278,7 +278,7 @@ Teams use DataCheck to prevent costly data quality issues in production pipeline
   <code style="background: rgba(255,255,255,0.15); color: white; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.85rem; display: block; font-family: monospace;">datacheck validate users.csv</code>
 </div>
 
-<div style="background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%); padding: 1.75rem; border-radius: 12px; color: white; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: transform 0.2s;">
+<div class="format-card" style="background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%); padding: 1.75rem; border-radius: 12px; color: white; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: transform 0.2s;">
   <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
     <div style="background: rgba(255,255,255,0.1); padding: 0.75rem; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
       <img src="/parquet-icon.svg" alt="Parquet" width="32" height="32" />
@@ -289,7 +289,7 @@ Teams use DataCheck to prevent costly data quality issues in production pipeline
   <code style="background: rgba(255,255,255,0.15); color: white; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.85rem; display: block; font-family: monospace;">datacheck validate data.parquet</code>
 </div>
 
-<div style="background: linear-gradient(135deg, #718096 0%, #4a5568 100%); padding: 1.75rem; border-radius: 12px; color: white; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: transform 0.2s;">
+<div class="format-card" style="background: linear-gradient(135deg, #718096 0%, #4a5568 100%); padding: 1.75rem; border-radius: 12px; color: white; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: transform 0.2s;">
   <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
     <div style="background: rgba(255,255,255,0.1); padding: 0.75rem; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
       <img src="/sqlite-icon.svg" alt="SQLite" width="32" height="32" />
@@ -300,7 +300,7 @@ Teams use DataCheck to prevent costly data quality issues in production pipeline
   <code style="background: rgba(255,255,255,0.15); color: white; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.85rem; display: block; font-family: monospace;">datacheck validate app.db::users</code>
 </div>
 
-<div style="background: linear-gradient(135deg, #a0aec0 0%, #718096 100%); padding: 1.75rem; border-radius: 12px; color: white; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: transform 0.2s;">
+<div class="format-card" style="background: linear-gradient(135deg, #a0aec0 0%, #718096 100%); padding: 1.75rem; border-radius: 12px; color: white; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: transform 0.2s;">
   <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
     <div style="background: rgba(255,255,255,0.1); padding: 0.75rem; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
       <img src="/duckdb-icon.svg" alt="DuckDB" width="32" height="32" />

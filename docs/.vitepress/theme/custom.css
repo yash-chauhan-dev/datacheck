@@ -1,0 +1,93 @@
+/* Custom card styles that work in both light and dark mode */
+
+/* Stats cards */
+.stats-card {
+  padding: 1.5rem;
+  border-radius: 12px;
+  transition: transform 0.2s;
+}
+
+.stats-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Light mode */
+:root {
+  .stats-card {
+    background: linear-gradient(135deg, var(--card-bg-start), var(--card-bg-end));
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Dark mode - use subtle borders and semi-transparent backgrounds */
+.dark .stats-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.06)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  color: var(--vp-c-text-1);
+}
+
+/* Impact cards */
+.impact-card {
+  padding: 2.5rem;
+  border-radius: 16px;
+  transition: transform 0.2s;
+}
+
+.impact-card:hover {
+  transform: translateY(-2px);
+}
+
+.dark .impact-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.06)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4) !important;
+  color: var(--vp-c-text-1);
+}
+
+.dark .impact-card h3 {
+  color: var(--vp-c-text-1) !important;
+}
+
+/* Format cards */
+.format-card {
+  padding: 1.75rem;
+  border-radius: 12px;
+  transition: transform 0.2s;
+}
+
+.format-card:hover {
+  transform: translateY(-2px);
+}
+
+.dark .format-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.06)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  color: var(--vp-c-text-1);
+}
+
+.dark .format-card h3 {
+  color: var(--vp-c-text-1) !important;
+}
+
+/* Nested elements in dark mode */
+.dark .impact-card [style*="background: rgba(255,255,255"],
+.dark .format-card [style*="background: rgba(255,255,255"] {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Code blocks in dark mode */
+.dark code[style*="background: rgba(255,255,255"] {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Buttons in dark mode */
+.dark .impact-card a[style*="background: white"] {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: var(--vp-c-text-1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
