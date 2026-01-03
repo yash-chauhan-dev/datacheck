@@ -11,13 +11,12 @@
   transform: translateY(-2px);
 }
 
-/* Light mode */
-:root {
-  .stats-card {
-    background: linear-gradient(135deg, var(--card-bg-start), var(--card-bg-end));
-    color: white;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  }
+/* Light mode - use lighter gradients with subtle borders */
+html:not(.dark) .stats-card {
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%) !important;
+  color: var(--vp-c-text-1) !important;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
 }
 
 /* Dark mode - use subtle borders and semi-transparent backgrounds */
@@ -37,6 +36,18 @@
 
 .impact-card:hover {
   transform: translateY(-2px);
+}
+
+/* Light mode impact cards */
+html:not(.dark) .impact-card {
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%) !important;
+  color: var(--vp-c-text-1) !important;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+html:not(.dark) .impact-card h3 {
+  color: var(--vp-c-text-1) !important;
 }
 
 .dark .impact-card {
@@ -61,6 +72,18 @@
   transform: translateY(-2px);
 }
 
+/* Light mode format cards */
+html:not(.dark) .format-card {
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%) !important;
+  color: var(--vp-c-text-1) !important;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+}
+
+html:not(.dark) .format-card h3 {
+  color: var(--vp-c-text-1) !important;
+}
+
 .dark .format-card {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.06)) !important;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -70,6 +93,35 @@
 
 .dark .format-card h3 {
   color: var(--vp-c-text-1) !important;
+}
+
+/* Nested elements in light mode */
+html:not(.dark) .impact-card [style*="background: rgba(255,255,255"] {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+html:not(.dark) .format-card [style*="background: rgba(255,255,255"] {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Code blocks in light mode */
+html:not(.dark) code[style*="background: rgba(255,255,255"] {
+  background: rgba(0, 0, 0, 0.06) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--vp-c-text-1) !important;
+}
+
+/* Buttons in light mode */
+html:not(.dark) .impact-card a[style*="background: white"] {
+  background: var(--vp-c-brand-1) !important;
+  color: white !important;
+  border: none;
+}
+
+html:not(.dark) .impact-card a[style*="background: white"]:hover {
+  background: var(--vp-c-brand-2) !important;
 }
 
 /* Nested elements in dark mode */
