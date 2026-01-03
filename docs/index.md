@@ -82,25 +82,25 @@ datacheck validate users.csv --config validation.yaml
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0;">
 
-<div class="stats-card" style="background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%); color: white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
+<div class="stats-card" style="padding: 1.5rem; background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%); border-radius: 12px; color: white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
   <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">10x</div>
   <div style="font-size: 1.1rem; opacity: 0.95;">Less code than custom validation</div>
   <div style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">Replace 100+ lines of Python with 10 lines of YAML</div>
 </div>
 
-<div class="stats-card" style="background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%); color: white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
+<div class="stats-card" style="padding: 1.5rem; background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%); border-radius: 12px; color: white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
   <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">6x</div>
   <div style="font-size: 1.1rem; opacity: 0.95;">Faster to set up</div>
   <div style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">From 30 minutes to 5 minutes</div>
 </div>
 
-<div class="stats-card" style="background: linear-gradient(135deg, #718096 0%, #4a5568 100%); color: white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
+<div class="stats-card" style="padding: 1.5rem; background: linear-gradient(135deg, #718096 0%, #4a5568 100%); border-radius: 12px; color: white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
   <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">8 hrs</div>
   <div style="font-size: 1.1rem; opacity: 0.95;">Saved per month</div>
   <div style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">Catch issues in 30 seconds vs 2 hours</div>
 </div>
 
-<div class="stats-card" style="background: linear-gradient(135deg, #a0aec0 0%, #718096 100%); color: white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
+<div class="stats-card" style="padding: 1.5rem; background: linear-gradient(135deg, #a0aec0 0%, #718096 100%); border-radius: 12px; color: white; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);">
   <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 0.5rem;">$100</div>
   <div style="font-size: 1.1rem; opacity: 0.95;">Saved per month</div>
   <div style="margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;">Prevent wasted GPU training costs</div>
