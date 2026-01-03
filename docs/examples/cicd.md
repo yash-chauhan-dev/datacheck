@@ -211,19 +211,19 @@ if [ $EXIT_CODE -eq 0 ]; then
     echo "✅ All validations passed"
     # Continue pipeline
 elif [ $EXIT_CODE -eq 1 ]; then
-    echo "❌ Validation failed"
+    echo "Validation failed"
     # Send alert
     curl -X POST https://alerts.company.com/webhook \
          -d '{"message": "Data validation failed"}'
     exit 1
 elif [ $EXIT_CODE -eq 2 ]; then
-    echo "❌ Configuration error"
+    echo "Configuration error"
     exit 1
 elif [ $EXIT_CODE -eq 3 ]; then
-    echo "❌ Data loading error"
+    echo "Data loading error"
     exit 1
 else
-    echo "❌ Unknown error"
+    echo "Unknown error"
     exit 1
 fi
 ```
@@ -265,7 +265,7 @@ jobs:
         run: |
           curl -X POST ${{ secrets.SLACK_WEBHOOK }} \
                -H 'Content-Type: application/json' \
-               -d '{"text":"❌ Production data validation failed!"}'
+               -d '{"text":"Production data validation failed!"}'
 ```
 
 **GitLab CI (hourly):**

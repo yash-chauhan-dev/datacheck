@@ -68,7 +68,7 @@ datacheck validate users.csv --config validation.yaml
 │ DataCheck Validation Results │
 ╰──────────────────────────────╯
 
-✓ ALL CHECKS PASSED
+ALL CHECKS PASSED
 
  Metric       Value
  Total Rules      4
