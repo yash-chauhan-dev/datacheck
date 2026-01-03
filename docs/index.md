@@ -265,42 +265,50 @@ Teams use DataCheck to prevent costly data quality issues in production pipeline
 
 ## Supported Data Formats
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
 
-<div style="display: flex; gap: 1rem; align-items: start; padding: 1.5rem; border: 1px solid #e5e7eb; border-radius: 8px;">
-  <img src="/csv-icon.svg" alt="CSV" width="48" height="48" style="flex-shrink: 0;" />
-  <div>
-    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem;">CSV Files</h3>
-    <p style="margin: 0 0 0.75rem 0; color: #6b7280; font-size: 0.9rem;">Automatic encoding detection, any delimiter</p>
-    <code style="background: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem;">datacheck validate users.csv</code>
+<div style="background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%); padding: 1.75rem; border-radius: 12px; color: white; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: transform 0.2s;">
+  <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+    <div style="background: rgba(255,255,255,0.1); padding: 0.75rem; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+      <img src="/csv-icon.svg" alt="CSV" width="32" height="32" />
+    </div>
+    <h3 style="margin: 0; font-size: 1.25rem; font-weight: 600;">CSV Files</h3>
   </div>
+  <p style="margin: 0 0 1rem 0; opacity: 0.9; font-size: 0.95rem; line-height: 1.5;">Automatic encoding detection, any delimiter</p>
+  <code style="background: rgba(255,255,255,0.15); color: white; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.85rem; display: block; font-family: monospace;">datacheck validate users.csv</code>
 </div>
 
-<div style="display: flex; gap: 1rem; align-items: start; padding: 1.5rem; border: 1px solid #e5e7eb; border-radius: 8px;">
-  <img src="/parquet-icon.svg" alt="Parquet" width="48" height="48" style="flex-shrink: 0;" />
-  <div>
-    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem;">Parquet Files</h3>
-    <p style="margin: 0 0 0.75rem 0; color: #6b7280; font-size: 0.9rem;">High performance columnar format for big data</p>
-    <code style="background: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem;">datacheck validate data.parquet</code>
+<div style="background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%); padding: 1.75rem; border-radius: 12px; color: white; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: transform 0.2s;">
+  <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+    <div style="background: rgba(255,255,255,0.1); padding: 0.75rem; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+      <img src="/parquet-icon.svg" alt="Parquet" width="32" height="32" />
+    </div>
+    <h3 style="margin: 0; font-size: 1.25rem; font-weight: 600;">Parquet Files</h3>
   </div>
+  <p style="margin: 0 0 1rem 0; opacity: 0.9; font-size: 0.95rem; line-height: 1.5;">High performance columnar format for big data</p>
+  <code style="background: rgba(255,255,255,0.15); color: white; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.85rem; display: block; font-family: monospace;">datacheck validate data.parquet</code>
 </div>
 
-<div style="display: flex; gap: 1rem; align-items: start; padding: 1.5rem; border: 1px solid #e5e7eb; border-radius: 8px;">
-  <img src="/sqlite-icon.svg" alt="SQLite" width="48" height="48" style="flex-shrink: 0;" />
-  <div>
-    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem;">SQLite Database</h3>
-    <p style="margin: 0 0 0.75rem 0; color: #6b7280; font-size: 0.9rem;">Validate tables directly, no export needed</p>
-    <code style="background: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem;">datacheck validate app.db::users</code>
+<div style="background: linear-gradient(135deg, #718096 0%, #4a5568 100%); padding: 1.75rem; border-radius: 12px; color: white; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: transform 0.2s;">
+  <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+    <div style="background: rgba(255,255,255,0.1); padding: 0.75rem; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+      <img src="/sqlite-icon.svg" alt="SQLite" width="32" height="32" />
+    </div>
+    <h3 style="margin: 0; font-size: 1.25rem; font-weight: 600;">SQLite Database</h3>
   </div>
+  <p style="margin: 0 0 1rem 0; opacity: 0.9; font-size: 0.95rem; line-height: 1.5;">Validate tables directly, no export needed</p>
+  <code style="background: rgba(255,255,255,0.15); color: white; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.85rem; display: block; font-family: monospace;">datacheck validate app.db::users</code>
 </div>
 
-<div style="display: flex; gap: 1rem; align-items: start; padding: 1.5rem; border: 1px solid #e5e7eb; border-radius: 8px;">
-  <img src="/duckdb-icon.svg" alt="DuckDB" width="48" height="48" style="flex-shrink: 0;" />
-  <div>
-    <h3 style="margin: 0 0 0.5rem 0; font-size: 1.1rem;">DuckDB Database</h3>
-    <p style="margin: 0 0 0.75rem 0; color: #6b7280; font-size: 0.9rem;">Analytics on large datasets (Linux/macOS only)</p>
-    <code style="background: #f3f4f6; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem;">datacheck validate data.duckdb::events</code>
+<div style="background: linear-gradient(135deg, #a0aec0 0%, #718096 100%); padding: 1.75rem; border-radius: 12px; color: white; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: transform 0.2s;">
+  <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+    <div style="background: rgba(255,255,255,0.1); padding: 0.75rem; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+      <img src="/duckdb-icon.svg" alt="DuckDB" width="32" height="32" />
+    </div>
+    <h3 style="margin: 0; font-size: 1.25rem; font-weight: 600;">DuckDB Database</h3>
   </div>
+  <p style="margin: 0 0 1rem 0; opacity: 0.9; font-size: 0.95rem; line-height: 1.5;">Analytics on large datasets (Linux/macOS only)</p>
+  <code style="background: rgba(255,255,255,0.15); color: white; padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.85rem; display: block; font-family: monospace;">datacheck validate data.duckdb::events</code>
 </div>
 
 </div>
