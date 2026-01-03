@@ -197,7 +197,7 @@ result = subprocess.run(
 
 data = json.loads(result.stdout)
 if data['summary']['failed'] > 0:
-    print(f"❌ {data['summary']['failed']} checks failed")
+    print(f"{data['summary']['failed']} checks failed")
     # Send alert, update dashboard, etc.
 ```
 

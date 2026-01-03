@@ -20,7 +20,7 @@ DataCheck uses standard exit codes for CI/CD integration.
 
 ```bash
 $ datacheck validate data.csv --config rules.yaml
-✓ ALL CHECKS PASSED
+ALL CHECKS PASSED
 
 $ echo $?
 0
@@ -41,7 +41,7 @@ $ echo $?
 
 ```bash
 $ datacheck validate data.csv --config rules.yaml
-✗ VALIDATION FAILED
+VALIDATION FAILED
 
 Check: email_format
 ├─ Failed: 5/100 rows (5.0%)
@@ -65,7 +65,7 @@ $ echo $?
   run: |
     datacheck validate data.csv --config rules.yaml
     if [ $? -eq 1 ]; then
-      echo "❌ Data quality check failed"
+      echo "Data quality check failed"
       exit 1
     fi
 ```
@@ -78,7 +78,7 @@ $ echo $?
 
 ```bash
 $ datacheck validate data.csv --config rules.yaml
-❌ Configuration Error: Invalid YAML syntax at line 5
+Configuration Error: Invalid YAML syntax at line 5
 
 $ echo $?
 2
@@ -98,14 +98,14 @@ checks:
   - name: test
     column: id
     rules:
-      not_null true  # ❌ Missing colon
+      not_null true  # Missing colon
 ```
 
 ### Missing Required Field
 ```yaml
 checks:
   - name: test
-    # ❌ Missing 'column'
+    # Missing 'column'
     rules:
       not_null: true
 ```
@@ -116,7 +116,7 @@ checks:
   - name: test
     column: id
     rules:
-      unknown_rule: true  # ❌ Not valid
+      unknown_rule: true  # Not valid
 ```
 
 **Resolution:**
@@ -132,7 +132,7 @@ checks:
 
 ```bash
 $ datacheck validate missing.csv --config rules.yaml
-❌ Error loading data: File not found: missing.csv
+Error loading data: File not found: missing.csv
 
 $ echo $?
 3
@@ -150,19 +150,19 @@ $ echo $?
 ### File Not Found
 ```bash
 $ datacheck validate data/users.csv --config rules.yaml
-❌ Error loading data: File not found: data/users.csv
+Error loading data: File not found: data/users.csv
 ```
 
 ### Wrong Database Format
 ```bash
 $ datacheck validate app.db:users --config rules.yaml
-❌ Error loading data: Invalid database format (use :: not :)
+Error loading data: Invalid database format (use :: not :)
 ```
 
 ### Corrupted File
 ```bash
 $ datacheck validate corrupted.parquet --config rules.yaml
-❌ Error loading data: Unable to read Parquet file
+Error loading data: Unable to read Parquet file
 ```
 
 **Resolution:**
@@ -179,7 +179,7 @@ $ datacheck validate corrupted.parquet --config rules.yaml
 
 ```bash
 $ datacheck validate data.csv --config rules.yaml
-❌ Runtime Error: Unexpected error occurred
+Runtime Error: Unexpected error occurred
 ```
 
 **Causes:**
@@ -205,22 +205,22 @@ EXIT_CODE=$?
 
 case $EXIT_CODE in
   0)
-    echo "✅ All validations passed"
+    echo "All validations passed"
     ;;
   1)
-    echo "❌ Validation failed"
+    echo "Validation failed"
     exit 1
     ;;
   2)
-    echo "❌ Configuration error - fix rules.yaml"
+    echo "Configuration error - fix rules.yaml"
     exit 1
     ;;
   3)
-    echo "❌ Data loading error - check file path"
+    echo "Data loading error - check file path"
     exit 1
     ;;
   *)
-    echo "❌ Unknown error"
+    echo "Unknown error"
     exit 1
     ;;
 esac
@@ -238,18 +238,18 @@ result = subprocess.run(
 )
 
 if result.returncode == 0:
-    print("✅ All validations passed")
+    print("All validations passed")
 elif result.returncode == 1:
-    print("❌ Validation failed")
+    print("Validation failed")
     sys.exit(1)
 elif result.returncode == 2:
-    print("❌ Configuration error")
+    print("Configuration error")
     sys.exit(1)
 elif result.returncode == 3:
-    print("❌ Data loading error")
+    print("Data loading error")
     sys.exit(1)
 else:
-    print(f"❌ Unknown error (code {result.returncode})")
+    print(f"Unknown error (code {result.returncode})")
     sys.exit(1)
 ```
 
@@ -307,14 +307,14 @@ print(f"Exit code: {result.returncode}")
 ### 1. Always Check Exit Codes in Scripts
 
 ```bash
-# ✅ Good
+# Good
 datacheck validate data.csv --config rules.yaml
 if [ $? -ne 0 ]; then
     echo "Validation failed"
     exit 1
 fi
 
-# ❌ Avoid ignoring exit codes
+# Avoid ignoring exit codes
 datacheck validate data.csv --config rules.yaml
 # Script continues even if validation fails!
 ```
@@ -322,14 +322,14 @@ datacheck validate data.csv --config rules.yaml
 ### 2. Handle Different Exit Codes Appropriately
 
 ```bash
-# ✅ Good - Different actions for different errors
+# Good - Different actions for different errors
 case $? in
   1) echo "Fix data quality"; exit 1 ;;
   2) echo "Fix configuration"; exit 1 ;;
   3) echo "Check file path"; exit 1 ;;
 esac
 
-# ❌ Avoid treating all errors the same
+# Avoid treating all errors the same
 if [ $? -ne 0 ]; then
     echo "Something failed"
 fi
@@ -338,7 +338,7 @@ fi
 ### 3. Use in CI/CD Pipelines
 
 ```yaml
-# ✅ Good - Explicit failure handling
+# Good - Explicit failure handling
 - name: Validate
   run: |
     datacheck validate data.csv --config rules.yaml || exit 1

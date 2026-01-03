@@ -319,7 +319,7 @@ checks:
   - name: test
     column: id
     rules:
-      not_null true  # ❌ Missing colon
+      not_null true  # Missing colon
 ```
 
 **Error:** Configuration error (exit code 2)
@@ -331,7 +331,7 @@ checks:
   - name: test
     column: id
     rules:
-      unknown_rule: true  # ❌ Not a valid rule
+      unknown_rule: true  # Not a valid rule
 ```
 
 **Error:** Configuration error (exit code 2)
@@ -341,7 +341,7 @@ checks:
 ```yaml
 checks:
   - name: test
-    # ❌ Missing 'column' field
+    # Missing 'column' field
     rules:
       not_null: true
 ```
@@ -354,12 +354,12 @@ checks:
 
 ### 1. Use Descriptive Names
 ```yaml
-# ✅ Good
+# Good
 - name: user_email_format_validation
   column: email
   rules: {...}
 
-# ❌ Avoid
+# Avoid
 - name: check1
   column: email
   rules: {...}

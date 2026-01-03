@@ -94,7 +94,7 @@ datacheck validate data.csv --config rules.yaml
 │ DataCheck Validation Results │
 ╰──────────────────────────────╯
 
-✗ VALIDATION FAILED
+ VALIDATION FAILED
 
 Check: email_format
 ├─ Column: email
@@ -159,9 +159,9 @@ DataCheck uses standard exit codes for CI/CD integration:
 ```bash
 datacheck validate data.csv --config rules.yaml
 if [ $? -eq 0 ]; then
-    echo "✅ Validation passed"
+    echo "Validation passed"
 else
-    echo "❌ Validation failed"
+    echo "Validation failed"
     exit 1
 fi
 ```

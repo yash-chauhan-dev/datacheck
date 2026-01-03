@@ -107,10 +107,10 @@ checks:
 
 ### 1. Use Descriptive Names
 ```yaml
-# ✅ Good
+# Good
 - name: user_email_format_check
 
-# ❌ Avoid
+# Avoid
 - name: check1
 ```
 

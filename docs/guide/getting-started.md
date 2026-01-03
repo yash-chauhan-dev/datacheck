@@ -45,7 +45,7 @@ Output:
 │ DataCheck Validation Results │
 ╰──────────────────────────────╯
 
-✗ VALIDATION FAILED
+VALIDATION FAILED
 
 Check: email_format
 ├─ Column: email
@@ -76,8 +76,8 @@ Summary:
 
 ## Exit Codes
 
-- `0`: All validations passed ✅
-- `1`: Some validations failed ❌
+- `0`: All validations passed
+- `1`: Some validations failed
 - `2`: Configuration error
 - `3`: Data loading error
 

@@ -84,10 +84,10 @@ checks:
 ### The Impact
 
 **Before DataCheck:**
-- ❌ Issues discovered after 2-hour transformation
-- ❌ 5 hours total time to fix and re-run
-- ❌ Wasted compute resources
-- ❌ Delayed data delivery
+- Issues discovered after 2-hour transformation
+- 5 hours total time to fix and re-run
+- Wasted compute resources
+- Delayed data delivery
 
 **After DataCheck:**
 - ✅ Issues caught in 30 seconds
@@ -130,7 +130,7 @@ def validate_training_data():
     ], capture_output=True, text=True)
 
     if result.returncode != 0:
-        print("❌ Training data validation failed!")
+        print(""Training data validation failed!")
         print(result.stdout)
         return False
 
@@ -188,10 +188,10 @@ checks:
 ### The Impact
 
 **Before DataCheck:**
-- ❌ Start training → discover bad data 2 hours later
-- ❌ $25/hour × 2 hours = $50 wasted per failure
-- ❌ 3-4 failures per month = $150-200/month wasted
-- ❌ Delayed model deployment
+- Start training → discover bad data 2 hours later
+- $25/hour × 2 hours = $50 wasted per failure
+- 3-4 failures per month = $150-200/month wasted
+- Delayed model deployment
 
 **After DataCheck:**
 - ✅ Validate in 30 seconds
@@ -297,7 +297,7 @@ jobs:
             --config contracts/user_events.yaml
 
           if [ $? -ne 0 ]; then
-            echo "❌ Breaking contract! Cannot merge."
+            echo ""Breaking contract! Cannot merge."
             exit 1
           fi
 ```
@@ -331,10 +331,10 @@ jobs:
 ### The Impact
 
 **Before Data Contracts:**
-- ❌ Producer changes schema → breaks consumer in production
-- ❌ No early warning
-- ❌ Production incidents
-- ❌ Manual coordination required
+- Producer changes schema → breaks consumer in production
+- No early warning
+- Production incidents
+- Manual coordination required
 
 **After Data Contracts:**
 - ✅ Producer CI fails if breaking contract
@@ -405,7 +405,7 @@ def validate_data(file_path):
     # ... 60 more lines ...
 
     if errors:
-        print("❌ Validation failed:")
+        print(""Validation failed:")
         for error in errors:
             print(f"  - {error}")
         sys.exit(1)
@@ -479,10 +479,10 @@ jobs:
 ### The Impact
 
 **Before DataCheck:**
-- ❌ 100+ lines of Python code
-- ❌ Requires Python expertise to modify
-- ❌ Hard to maintain
-- ❌ Tightly coupled to codebase
+- 100+ lines of Python code
+- Requires Python expertise to modify
+- Hard to maintain
+- Tightly coupled to codebase
 
 **After DataCheck:**
 - ✅ 25 lines of simple YAML
@@ -498,7 +498,7 @@ jobs:
 
 ---
 
-## 📊 Daily Data Quality Monitoring
+##  Daily Data Quality Monitoring
 
 ### The Problem
 
@@ -560,7 +560,7 @@ jobs:
           curl -X POST ${{ secrets.SLACK_WEBHOOK }} \
                -H 'Content-Type: application/json' \
                -d "{
-                 \"text\": \"❌ Production data quality alert!\",
+                 \"text\": \""Production data quality alert!\",
                  \"blocks\": [
                    {
                      \"type\": \"section\",
@@ -587,7 +587,7 @@ jobs:
             await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: '⚠️ Production Data Quality Alert',
+              title: 'WARNING: Production Data Quality Alert',
               body: `Production data validation failed.\n\n**Failed Checks:** ${{ env.failed_checks }}/${{ env.total_checks }}\n\n[View Run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})`,
               labels: ['data-quality', 'production', 'alert']
             });
@@ -630,10 +630,10 @@ checks:
 ### The Impact
 
 **Before Monitoring:**
-- ❌ Reactive - discover issues when users complain
-- ❌ Manual spot checks (time-consuming)
-- ❌ No trending or history
-- ❌ Late detection
+- Reactive - discover issues when users complain
+- Manual spot checks (time-consuming)
+- No trending or history
+- Late detection
 
 **After Monitoring:**
 - ✅ Proactive - catch issues before users see them

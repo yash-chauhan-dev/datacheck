@@ -136,7 +136,7 @@ for table in users orders products events; do
     echo "Validating $table..."
     datacheck validate app.db::$table --config validation/$table.yaml
     if [ $? -ne 0 ]; then
-        echo "❌ Validation failed for $table"
+        echo "Validation failed for $table"
         exit 1
     fi
 done
