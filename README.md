@@ -6,17 +6,36 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 [![Type checked: mypy](https://img.shields.io/badge/type%20checked-mypy-blue.svg)](http://mypy-lang.org/)
-[![Documentation](https://img.shields.io/badge/docs-mkdocs-blue.svg)](https://yash-chauhan-dev.github.io/datacheck/)
+[![Documentation](https://img.shields.io/badge/docs-vitepress-blue.svg)](https://yash-chauhan-dev.github.io/datacheck/)
 
-📚 **[Read the Full Documentation](https://yash-chauhan-dev.github.io/datacheck/)** 📚
+**[Read the Full Documentation](https://yash-chauhan-dev.github.io/datacheck/)**
+
+---
+
+## Table of Contents
+
+- [What is DataCheck?](#what-is-datacheck)
+- [Quick Start](#quick-start)
+- [Key Features](#key-features)
+- [Usage](#usage)
+- [Validation Rules Reference](#validation-rules-reference)
+- [Configuration Guide](#configuration-guide)
+- [Examples](#examples)
+- [Integration Patterns](#integration-patterns)
+- [Development](#development)
+- [FAQ](#faq)
+- [License](#license)
+
+---
 
 ## What is DataCheck?
 
 DataCheck is a **simple, fast, and CLI-first** data validation tool for engineers who need to:
-- ✅ Validate data quality without heavy frameworks
-- ✅ Fail CI/CD pipelines when data doesn't meet expectations
-- ✅ Get instant, beautiful feedback on data issues
-- ✅ Write validation rules in simple YAML
+
+- Validate data quality without heavy frameworks
+- Fail CI/CD pipelines when data doesn't meet expectations
+- Get instant, beautiful feedback on data issues
+- Write validation rules in simple YAML
 
 **Think of it as "pytest for data" - lightweight, focused, and developer-friendly.**
 
@@ -27,7 +46,7 @@ DataCheck is a **simple, fast, and CLI-first** data validation tool for engineer
 ### Installation
 
 ```bash
-# From PyPI (when published)
+# From PyPI
 pip install datacheck-cli
 
 # From source
@@ -80,7 +99,7 @@ datacheck validate employees.csv --config validation.yaml
 │ DataCheck Validation Results │
 ╰──────────────────────────────╯
 
-✓ ALL CHECKS PASSED
+ALL CHECKS PASSED
 
  Metric       Value
  Total Rules      7
@@ -91,37 +110,37 @@ datacheck validate employees.csv --config validation.yaml
 
 ---
 
-## Features
+## Key Features
 
-### 🚀 **Multiple Data Formats**
-- **CSV** (with automatic encoding detection)
-- **Parquet** (efficient columnar format)
-- **DuckDB/SQLite** (SQL databases)
+### Multiple Data Formats
+- **CSV** with automatic encoding detection
+- **Parquet** efficient columnar format
+- **DuckDB/SQLite** SQL databases
 
-### 📝 **Simple YAML Configuration**
+### Simple YAML Configuration
 - Easy to write and version control
 - Clear, declarative syntax
 - Reusable validation configs
 
-### 🎨 **Beautiful Terminal Output**
+### Beautiful Terminal Output
 - Rich, colorful output using [Rich](https://rich.readthedocs.io/)
 - Clear pass/fail indicators
 - Detailed failure reports with row indices
 - JSON output for programmatic use
 
-### ⚡ **CI/CD Ready**
+### CI/CD Ready
 - Proper exit codes (0=pass, 1=fail, 2+=errors)
 - JSON output for automation
 - Fast validation using Pandas
 
-### 🔧 **Comprehensive Validation Rules**
+### Comprehensive Validation Rules
 - `not_null` - No missing values
 - `min` / `max` - Numeric range validation
 - `unique` - Detect duplicates
 - `regex` - Pattern matching
 - `allowed_values` - Enum/whitelist validation
 
-### 📊 **Detailed Reporting**
+### Detailed Reporting
 - Pass/fail statistics
 - Sample failure indices
 - Failure rates and percentages
@@ -169,10 +188,10 @@ DataCheck uses exit codes for automation and CI/CD:
 ```bash
 datacheck validate data.csv --config rules.yaml
 if [ $? -eq 0 ]; then
-  echo "✓ Data validation passed"
+  echo "Data validation passed"
   python load_to_warehouse.py
 else
-  echo "✗ Data validation failed"
+  echo "Data validation failed"
   exit 1
 fi
 ```
@@ -264,7 +283,7 @@ Multiple rules on one column:
   column: user_age
   rules:
     not_null: true    # Required
-    unique: false      # Duplicates OK
+    unique: false     # Duplicates OK
     min: 13           # COPPA compliance
     max: 120          # Reasonable maximum
 ```
@@ -331,7 +350,7 @@ checks:
     column: user_id
     rules:
       not_null: true      # Required field
-      unique: true         # No duplicate users
+      unique: true        # No duplicate users
 
   # GDPR compliance - must be 16+ in EU
   - name: age_compliance
@@ -362,6 +381,7 @@ datacheck validate customer_data_with_errors.csv --config validation_config.yaml
 ### Real-World Examples
 ```bash
 cd examples/real-world
+
 # E-commerce sales validation
 datacheck validate sales_data.csv --config sales_validation.yaml
 
@@ -399,13 +419,13 @@ def validate_data(file_path, config_path):
 # Usage
 results = validate_data("data.csv", "rules.yaml")
 if results["status"] == "passed":
-    print("✓ Validation passed")
+    print("Validation passed")
     # Proceed with data processing
 ```
 
 ### CI/CD Integration
 
-**GitHub Actions**:
+#### GitHub Actions
 ```yaml
 name: Data Quality Check
 
@@ -440,6 +460,16 @@ jobs:
           path: results.json
 ```
 
+#### GitLab CI
+```yaml
+validate:
+  image: python:3.10
+  script:
+    - pip install datacheck-cli
+    - datacheck validate data.csv --config rules.yaml
+  allow_failure: false
+```
+
 ### Pre-commit Hook
 
 ```bash
@@ -451,18 +481,17 @@ echo "Running data validation..."
 for file in $(git diff --cached --name-only | grep '\.csv$'); do
   datacheck validate "$file" --config validation/data.yaml
   if [ $? -ne 0 ]; then
-    echo "✗ Validation failed for $file"
+    echo "Validation failed for $file"
     exit 1
   fi
 done
 
-echo "✓ All data files validated successfully"
+echo "All data files validated successfully"
 ```
 
-### Data Pipeline Integration
+### Apache Airflow Integration
 
 ```python
-# Apache Airflow DAG
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
@@ -600,18 +629,23 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for:
 ## FAQ
 
 **Q: How is DataCheck different from Great Expectations?**
+
 A: DataCheck is lightweight and CLI-first, designed for engineers who want fast validation without extensive setup. Great Expectations is more comprehensive but requires more configuration.
 
 **Q: Can I use DataCheck in production?**
+
 A: Yes! DataCheck is designed for production use in CI/CD pipelines and data workflows. See the [examples/real-world](examples/real-world/) directory.
 
 **Q: Does DataCheck support custom validation rules?**
+
 A: Currently, DataCheck supports a core set of rules. Custom rules via Python plugins are planned for v0.2.0.
 
 **Q: How fast is DataCheck?**
+
 A: DataCheck is built on Pandas and processes data efficiently. For example, validating 1M rows with 10 rules takes ~2-3 seconds on standard hardware.
 
 **Q: Can DataCheck handle large files?**
+
 A: Yes, DataCheck uses Pandas which efficiently handles millions of rows. For very large files (GB+), consider using Parquet format for better performance.
 
 ---
@@ -642,4 +676,4 @@ Built with:
 
 ---
 
-**Made with ❤️ for data engineers who value simplicity and speed.**
+**Made with care for data engineers who value simplicity and speed.**
