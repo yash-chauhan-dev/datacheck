@@ -1,6 +1,6 @@
 # DataCheck
 
-> Lightweight data quality validation CLI tool for data engineers
+> Lightweight data quality validation CLI tool
 
 [![Python Version](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -30,7 +30,7 @@
 
 ## What is DataCheck?
 
-DataCheck is a **simple, fast, and CLI-first** data validation tool for engineers who need to:
+DataCheck is a **simple, fast, and CLI-first** data validation tool for teams who need to:
 
 - Validate data quality without heavy frameworks
 - Fail CI/CD pipelines when data doesn't meet expectations
@@ -676,4 +676,4 @@ Built with:
 
 ---
 
-**Made with care for data engineers who value simplicity and speed.**
+**Made with ❤️ for teams who value simplicity and speed.**
